@@ -1,0 +1,117 @@
+Qno. 1 State the difference between statement,preparedStatement & callableStatement.
+ans.
+CallableStatement
+
+It is used when the stored procedures are to be executed.
+You can pass 3 types of parameter IN, OUT, INOUT.
+Used to execute functions
+Used to call the stored procedures.
+No protocol is used for communication.
+
+PreparedStatement
+It is used when SQL query is to be executed multiple times.
+You can pass any type of parameters at runtime.
+Used to execute dynamic SQL queries.
+
+Statement
+The Statement is used for executing a static SQL statement.
+we can not use statement for writing or reading binary data
+it has slow interface is slow cuz it compile program for each execution
+
+Qno. 2:- Why do we need the connection object?
+Ans.
+A Connection object represents a unique session with a data source. In a client/server database system, it may be equivalent to an actual network connection to the server.
+ Depending on the functionality supported by the provider, some collections, methods, or properties of a Connection object may not be available.
+
+Qno. 3:-Write the query for incrementing salary of all employees by 5 %.
+
+Ans.
+UPDATE tableName SET salary= salary + (salary * 5 / 100);
+
+Qno. 4:-What is a Stored procedure, how do we call a stored procedure in java?
+Ans.
+A stored procedure is a prepared SQL code that you can save, so the code can be reused over and over again.
+package day18;
+
+import java.sql.*;
+
+public class Qno4 {
+
+ public static void main(String[] args) throws Exception
+ {
+     Class.forName("com.mysql.cj.jdbc.Driver");
+    
+     
+     Connection con = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "");
+    
+     String sql_string = "insert into students values(?,?,?)";
+    
+     
+     CallableStatement cs = con.prepareCall(sql_string);
+    
+     cs.setString(1, "val 1");
+     cs.setString(2, "val 2");
+     cs.setString(3, "val 3");
+     cs.execute();
+     System.out.print("added ");
+ }
+}
+
+
+Qno. 5:- What are the benefits of using a trigger.
+
+Ans
+Define a trigger once and then reuse it for any application that uses the database.
+Easier maintenance. If you want to change the logic of whole program, you need to change only the corresponding trigger program instead of each application program.
+Improve performance in client/server environment all quires run in the server before the result returns.
+
+Qno. 6:-
+Ans.
+JOIN
+JOIN combines data from many tables based on a matched condition between them
+It combines data into new columns.
+Number of columns selected from each table may not be same.
+Datatypes of corresponding columns selected from each table can be different.
+
+
+UNION
+SQL combines the result-set of two or more SELECT statements.
+It combines data into new rows
+Number of columns selected from each table should be same.
+Datatypes of corresponding columns selected from each table should be same.
+
+
+Qno. 7:-difference and examples of DDL,DML and DQL statements.
+Ans.
+DDL
+Data Definition Language (DDL) have query CREATE, ALTER and DROP statements.
+consists of the SQL commands that can be used to define the database schema. DDL allows to add / modify / delete the logical structures which contain the data or which allow users to 
+access / maintain the data.
+Create TableName ();
+
+DML
+Data Manipulation Language (DML) refers to the INSERT, UPDATE and DELETE statements
+DML allows to add / modify / delete data itself.
+UPDATE tableName SET salary= salary + (salary * 5 / 100);
+
+
+DQL
+Data Query Language (DQL) refers to the SELECT, SHOW and HELP statements (queries)
+SELECT is the main DQL instruction. It retrieves data you need. SHOW retrieves infos about the metadata. HELP... is for people who need help.
+
+Select * from tableName;
+
+Qno. 8:-List the basic steps for JDBC.
+Ans.
+Register the Driver class.
+Class.forName("com.mysql.cj.jdbc.Driver");
+						
+Create connection.
+Connection Con = DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","");
+
+Create statement.
+String query = "insert into employee(empId,name,profile,salary) values(?,?,?,?)";
+PreparedStatement ps = Con.prepareStatement(query);
+
+Execute queries.
+ps.executeUpdate();

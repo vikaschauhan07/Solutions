@@ -1,0 +1,490 @@
+
+Qno.1:-Write a program to check entered number is Palindrome or not. 
+Ans.
+package day2;
+
+import java.util.Scanner;
+
+public class Qno1 {
+
+	public static void main(String[] args) {
+		// Write a program to check entered number is Palindrome or not. 
+		Scanner it = new Scanner(System.in);
+		System.out.println("Enter the String to Check Palindrom ");
+		int n = it.nextInt();
+		
+		String str = new String("" + n); 
+		if(palindChe(str)) {
+			System.out.println(" is palindrom ");
+		} else {
+			System.out.println(" not palindrom ");
+		}
+
+	}
+	static boolean palindChe(String str) {
+		StringBuilder st = new StringBuilder(str);
+		st.reverse();
+		String reverseString = st.toString();
+		if(reverseString.equals(str)) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+
+}
+
+
+Qno2:-Write a program to swap first and last digits of any number.
+Ans. 
+package day2;
+import java.util.*;
+public class Qno2 {
+
+	public static void main(String[] args) {
+		Scanner it = new Scanner(System.in);
+		int number =it.nextInt();
+
+		int lastChar = number % 10;            
+		int firstChar = number;
+		while(firstChar > 9) {
+		    firstChar /= 10;
+		}
+		
+
+		String str = Integer.toString(number);
+
+		char first = str.charAt(0);
+		char last = str.charAt(str.length() - 1);
+
+		str.replace(first, last);
+		str.replace(last, first);
+
+		System.out.println(str);
+		
+	}
+
+}
+
+
+
+Qno. 3:-Write a program to print Fibonacci series up to n terms.
+Ans. 
+package day2;
+import java.util.*;
+public class Qno3 {
+
+	public static void main(String[] args) {
+		//Write a program to print Fibonacci series up to n terms.
+		Scanner it = new Scanner(System.in);
+		System.out.println("enter the number ");
+		int n = it.nextInt();
+		
+		
+		int a = 0;
+		int b = 1;
+		int c;
+		
+		for(int i = 1;i <= n;i++) {
+			if(i == 1) {
+				System.out.print(a + " ");
+					
+			} else if(i == 2) {
+					System.out.print(b + " ");
+			} else {
+				c = a+b;
+				a = b;
+				b= c;
+				System.out.print(c + " ");
+			}
+		}
+		
+		
+		
+		
+	}
+
+}
+
+
+Qno. 4:-Write a program to create Simple Calculator using switch case.
+Ans. 
+package day2;
+
+import java.util.*;
+
+public class Qno4 {
+	public static void main(String args []) {
+		//Write a program to create Simple Calculator using switch case.
+		Scanner it = new Scanner(System.in);
+		System.out.println("enter the number ");
+		int a = it.nextInt();
+		System.out.println("enter the number ");
+		int b= it.nextInt();
+		
+		System.out.println("enter the operation you want + - * / %  ");
+		char userIn = it.next().charAt(0);
+		
+		switch(userIn) {
+		
+		case '+':
+			System.out.println(a+b);
+			break;
+		case '-':
+			System.out.println(a-b);
+			break;
+		case '*':
+			System.out.println(a*b);
+			break;
+		case '%':
+			System.out.println(a%b);
+			break;
+		case '/':
+			System.out.println(a/b);
+			break;
+		default:
+			System.out.println("invalid");
+			
+		
+		}
+		
+	}
+
+}
+
+Qno. 5:-Write a program to find maximum and minimum element in an array. 
+Ans. 
+package day2;
+import java.util.*;
+public class Qn05 {
+
+	public static void main(String[] args) {
+		// Write a program to find maximum and minimum element in an array. 
+		
+		System.out.println("enter the number of element you want in array");
+		Scanner it = new Scanner(System.in);
+		int n = it.nextInt();
+		
+		System.out.println(" enter the element of array ");
+		int [] arr = new int[n];
+		for(int i = 0;i < n;i++) {
+			arr[i] = it.nextInt();
+		}
+		
+		System.out.println(" maximum nuber is " + maxOfArr(arr));
+		System.out.println(" minimum nuber is " + minOfArr(arr));
+
+		
+	}
+	public static int maxOfArr(int [] arr) {
+		int max = arr[0];
+		for(int i = 0; i < arr.length; i++) {
+			if(max < arr[i]) {
+				max = arr[i];
+			}
+		}
+		return max;
+	}
+	public static int minOfArr(int [] arr) {
+		int min = arr[0];
+		for(int i = 0; i < arr.length; i++) {
+			if(min > arr[i]) {
+				min = arr[i];
+			}
+		}
+		return min;
+	}
+
+}
+Qno.6:-Write a program to insert an element in an array
+Ans.
+package day2;
+
+
+import java.util.Scanner;
+
+public class qno6 {
+	public static void main(String args[]) {
+		
+		System.out.println("enter the number of element you want in array");
+		Scanner it = new Scanner(System.in);
+		int n = it.nextInt();
+		
+		System.out.println(" enter the element of array ");
+		int [] arr = new int[n];
+		for(int i = 0;i < n;i++) {
+			arr[i] = it.nextInt();
+		}
+		int [] arr1 = new int[n+1];
+		for(int i = 0;i < n;i++) {
+			if(i < arr.length -1) {
+				arr1[i] = arr[1];
+			} else {
+				arr1[i] = it.nextInt();
+			}
+		}
+		
+		
+	}
+	
+
+}
+
+
+
+Qno 7:-Write a program to print all unique elements in the array.
+Ans.
+package day2;
+
+import java.util.Scanner;
+
+public class qno7 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("enter the number of element you want in array");
+		Scanner it = new Scanner(System.in);
+		int n = it.nextInt();
+		
+		System.out.println(" enter the element of array ");
+		int [] arr = new int[n];
+		for(int i = 0;i < n;i++) {
+			arr[i] = it.nextInt();
+		}
+		
+		boolean repeat = false;
+		for(int i = 0;i < n;i++) {
+			for(int j = 0;j< n;j++) {
+			if((arr[i] == arr[j]) && (i !=j)) {
+					repeat = true;
+					break;
+				}
+			
+			}
+			if(repeat) {
+				System.out.println(arr[i]);
+			}
+		}
+		
+
+	}
+
+}
+Qno8:-Write a program to count frequency of each element in an array.
+Ans.
+public class Qno8 {
+	public static void main(String [] args) {
+		
+		
+		System.out.println("enter the number of element you want in array");
+		Scanner it = new Scanner(System.in);
+		int n = it.nextInt();
+		
+		System.out.println(" enter the element of array ");
+		int [] arr = new int[n];
+		for(int i = 0;i < n;i++) {
+			arr[i] = it.nextInt();
+		}
+		
+	     int [] freq = new int [arr.length];  
+	     int visited = -1;  
+	     for(int i = 0; i < arr.length; i++){  
+	        int count = 1;  
+	        for(int j = i+1; j < arr.length; j++){  
+	           if(arr[i] == arr[j]){  
+	                 count++;  
+	                    
+	                 freq[j] = visited;  
+	                }  
+	            }  
+	            if(freq[i] != visited)  
+	                freq[i] = count;  
+	        }    
+	        for(int i = 0; i < freq.length; i++){  
+	            if(freq[i] != visited)  
+	                System.out.println(arr[i] + " " + freq[i]);  
+	        }  
+	          
+	}
+    
+}
+
+
+
+
+Qno.9:- Write a program to sort array elements in ascending order.
+Ans.
+package day2;
+
+import java.util.Scanner;
+
+public class Qno9 {
+
+	public static void main(String[] args) {
+		// Write a program to sort array elements in ascending order.
+		System.out.println("enter the number of element you want in array");
+		Scanner it = new Scanner(System.in);
+		int n = it.nextInt();
+		
+		System.out.println(" enter the element of array ");
+		int [] arr = new int[n];
+		
+		for(int i = 0;i < n;i++) {
+			arr[i] = it.nextInt();
+		}
+		
+		int temp = 0;    
+		for (int i = 0; i < arr.length; i++) {     
+	           for (int j = i+1; j < arr.length; j++) {     
+	              if(arr[i] > arr[j]) {    
+	                  temp = arr[i];    
+	                  arr[i] = arr[j];    
+	                  arr[j] = temp;    
+	               }     
+	            }     
+	        }
+		int sortArr [] =  new int[n];
+		for(int i = 0; i < n;i++) {
+			sortArr[i] = arr[i];
+		}
+		System.out.println(sortArr);
+	        
+	}
+
+}
+
+Qno.10:-  Write a program to toggle case of each character of a string.
+Ans.
+package day2;
+
+import java.util.Scanner;
+
+public class Qno10 {
+	//Write a program to toggle case of each character of a string.
+	public static void main(String args []) {
+		System.out.println("enter the word to change ");
+		Scanner it = new Scanner(System.in);
+		 String str = it.nextLine();
+		 String changedStr = "";
+		 for (int i = 0; i < str.length(); i++) {
+			if(Character.isUpperCase(str.charAt(i))) 
+				 changedStr=changedStr+Character.toLowerCase(str.charAt(i));
+			else 
+				changedStr=changedStr+Character.toUpperCase(str.charAt(i));
+		}
+		System.out.println(changedStr);
+		
+		
+	}
+	
+}
+
+Qno.11:-Write a program to find lowest frequency character in a string.
+Ans.package day2;
+import java.util.*;
+public class Qno11 {
+
+	public static void main(String[] args) {
+		//Write a program to find lowest frequency character in a string.
+		Scanner it = new Scanner(System.in);
+		System.out.println("enter the string ");
+		String str = it.nextLine();    
+	      int[] freq = new int[str.length()];    
+	      char minChar = str.charAt(0); 
+	      char charVist[] = str.toCharArray();    
+	          
+	                  
+	             
+	      for(int i = 0; i < charVist.length; i++) {    
+	          freq[i] = 1;    
+	          for(int j = i+1; j < charVist.length; j++) {    
+	              if(charVist[i] == charVist[j] && charVist[i] != ' ' && charVist[j] != '0') {    
+	                  freq[i]++;    
+	                  charVist[j] = '0';    
+	              }    
+	          }    
+	      }   
+	      
+	      
+	      int min = freq[0];    
+	      for(int i = 0; i <freq.length; i++) {       
+	          if(min > freq[i] && freq[i] != '0') {    
+	              min = freq[i];    
+	              minChar = charVist[i];    
+	          } 
+	      }
+	      
+	      System.out.println("freq min is  of " + minChar + " "+  min + " time");    
+	      
+	}
+
+}
+
+Qno 12:- WAP to find the occurrence of each digit in a number.
+Ans. 
+package day2;
+import java.util.*;
+public class Qno12 {
+	public static void main(String args []) {
+		//WAP to find the occurrence of each digit in a number
+		
+		Scanner it  = new Scanner(System.in);
+		System.out.println("enter the number ");
+		
+		
+		String st = new String(it.nextLine());
+		System.out.println(st);
+		
+		for(int i = 0; i < st.length();i++) {
+			int count = 0;
+			for(int j = 0; j< st.length();j++ ) {
+			if(st.charAt(i) == st.charAt(j)) {
+				count++;
+				
+			}
+			
+			}
+			System.out.println(st.charAt(i) + " repeated " +count + " time" );
+			System.out.println();
+		}
+		
+	}
+
+}
+
+
+
+Qno. 13:- WAP to check Palindrome of a String.
+Ans. package day2;
+
+import java.util.*;
+public class Qno13 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Enter the String to Check Palindrom ");
+		String  str = new Scanner(System.in).nextLine(); 
+		if(palindChe(str)) {
+			System.out.println(" is palindrom ");
+		} else {
+			System.out.println(" not palindrom ");
+		}
+	}
+	
+	
+	
+	static boolean palindChe(String str) {
+		StringBuilder st = new StringBuilder(str);
+		st.reverse();
+		String reverseString = st.toString();
+		if(reverseString.equals(str)) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+
+}
+ 

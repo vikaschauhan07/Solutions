@@ -1,0 +1,151 @@
+Qno. 1:-/Write a program containing a possible exception. Use a try block to throw it and a catch block
+//to handle it promptly.
+Ans.
+package day14;
+
+public class Qno1 {
+	public static void main(String args []) {
+		try {
+			int n= 4/0;
+		}catch(ArithmeticException e) {
+			System.out.println(e);
+		}
+	}
+}
+
+Qno. 2:-//Write a program that illustrates the application of multiple catch statements.
+
+Ans.
+package day14;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+
+public class Qno1 {
+	public static void main(String args []) {
+		try {
+			int n= 4/1;
+			System.out.println("enter String");
+			int g = new Scanner(System.in).nextInt();
+			System.out.println(g);
+			
+		}catch(ArithmeticException e) {
+			System.out.println(e);
+		}catch(InputMismatchException e) {
+			System.out.println(e);
+		} catch(NullPointerException e) {
+			System.out.println(e);
+		} finally {
+			System.out.println("no exception");
+		}
+	}
+}
+
+Qno. 3:-Write a program that demonstrates how certain exception types are not allowed to be thrown
+Ans.
+The unchecked exceptions are just opposite to the checked exceptions. The compiler will not check these exceptions at compile time. In simple words, if a program throws an unchecked exception, and even if we didn't handle or declare it, the program would not give a compilation error.
+package day14;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+
+public class Qno1 {
+	public static void main(String args []) {
+		try {
+			int n= 4/1;
+			System.out.println("enter String");
+			int g = new Scanner(System.in).nextInt();
+			System.out.println(g);
+			
+		}catch(ArithmeticException e) {
+			System.out.println(e);
+		}catch(InputMismatchException e) {
+			System.out.println(e);
+		} catch(NullPointerException e) {
+			System.out.println(e);
+		} finally {
+			System.out.println("no exception");
+		}
+	}
+}
+
+
+
+
+
+
+Qno4 :-Write a program to demonstrate the concept of re-throwing an exception
+Ans.
+
+package day14;
+
+public class Qno1 {
+	public static void main(String[] args) throws Throwable {
+	      try {
+	         meth2();
+	      } catch(Exception e) {
+	         System.out.println("Caught in main");
+	      }
+	  }
+	static void meth1() throws Exception {
+      System.out.println("The Exception in  method1");
+      throw new Exception("thrown from method 1");
+    }
+    static void meth2() throws Throwable {
+      try {
+         meth1();
+      } catch(Exception e) {
+         System.out.println(" Exception Inside  method 2");
+         throw e;
+      }
+   }
+   
+}
+
+
+
+
+Qno. 5:- You will be given two integers and as input, you have to compute x/y. If x and y are not 32 bit
+signed integers or if y is zero, exception will occur and you have to report it. Read sample
+Input/Output to know what to report in case of exceptions. 
+
+Ans.
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Qno1 {
+
+
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        try {
+            int x = in.nextInt();
+            int y = in.nextInt();
+
+            division(x, y);
+        } catch (InputMismatchException e) {
+            System.out.println("java.util.InputMismatchException");
+        }
+
+    }
+    public static void division(int x, int y) {
+        if(y == 0) {
+            try {
+                int rez = x / y;
+
+            } catch (ArithmeticException e) {
+                System.out.println("java.lang.ArithmeticException: / by zero");
+            }
+        } else {
+            System.out.println(x / y);
+        }
+    }
+
+}
+
+
+

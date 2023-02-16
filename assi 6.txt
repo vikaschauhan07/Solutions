@@ -1,0 +1,175 @@
+Qno. 1:-Specify the need and advantage of inheritance with an example.
+Ans. 
+inheritance prvides us many feature like code reusabilty
+we can define characterstics and behavior of the class and object which we can use again and again 
+it saves us to write codes and methid again and again.
+class Superclassname
+
+{
+void behave()
+{
+System.out.println(" ") 
+}
+}
+
+class subclassname extends Superclassname
+{
+
+}
+Qno. 2:- State the type of inheritance with real life examples.
+Ans.
+Single level Inheritance(1P-1C)
+there is a single child class that inherits properties from one parent class.
+e.g:-nothing phones
+
+Multiple level Inheritance(MP-MC)
+he child or derived class inherits the features of the superclass and simultaneously this child class acts as a superclass for another derived class.
+e.g:-courts procedures
+
+Hirearchy level Inheritance(1P-MC)
+one class acts as a superclass (base class) for more than one subclass. More than one subclass can inherit the features of a base class.
+e.g:-companies having multiple branch
+
+Hybrid level Inheritance(all of the above)
+one child or subclass class can have more than one base class or superclass and inherit features from every parent class which it inherits.
+e.g:-family tree
+
+Qno. 3:-
+Ans.
+there are two types of realtionships present:-
+IS -A relationships
+Inheritance represents the IS-A relationship which is also known as a parent-child relationship.
+in it child class directly inherit all the properties of the parent class.
+
+HAS-A realationships:-
+If a class have an entity reference, it is known as Aggregation. Aggregation represents HAS-A relationship.
+it conssit that kind of data which is common for all or some of person or class or object
+
+Qno. 4:-Will the code successfully compiled? If yes, what is the output?
+public class A{
+	int x = 30;
+}
+public class B extends A {
+	 int x = 30;
+	}
+public class Qno4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		B b = new B();
+		System.out.println(b.x);
+		A a = new A();
+		System.out.println(a.x);
+		A a2 = new B();
+		System.out.println(a2.x);
+
+	}
+
+}
+
+Ans. 
+only one public class is possible in one java class so it will throws a exception that we have to define these classes in seprate files.
+
+Qno. 5:-Will this code compile successfully? If yes, what is the output? If no, identify the errors.
+package pack1;package pack1;
+public class A
+{
+ private int x = 50;
+ protected int y = 100;
+ int z = 200;
+}
+package pack2;
+import pack1.A;
+public class B extends A {
+}
+import pack2.B;
+public class Test {
+public static void main(String[] args)
+{
+ B b = new B();
+ System.out.println(b.x);
+ System.out.println(b.y);
+ System.out.println(b.z);
+ }
+}
+
+Ans.cuz every public classes are defined in the seprate packages so this code will runs without any error
+50
+100
+200
+
+
+Qno. 6:-What is the difference between Composition and Inheritance in OOP?
+Ans. 
+Composition:-
+has-a relationship
+We can evaluate the functioning of the classes that we are using without having to be concerned with determining whether or not they are the parent or the child classes.
+Because of composition, it is possible to reuse the code even in the final classes.
+Composition gives users the flexibility to mix features and capabilities from multiple classes into a single entity.
+
+
+
+Inheritance:-
+is-a relationship
+It is not possible to test a child class without first testing its parent class.
+In inheritance, we are responsible for defining the class that will become our "superclass," and this definition is immutable once it has been used.
+Java does not support multiple inheritances, which means that several classes cannot be extended.
+
+Qno. 7:-
+Ans.
+When super class and sub class contains same method including parameters and if they are static.
+The method in the super class will be hidden by the one that is in the sub class. This mechanism is known as method hiding.
+
+class Demo{
+   public static void demoMethod() {
+      System.out.println("method of super class");
+   }
+}
+public class Sample extends Demo {
+   public static void demoMethod() {
+      System.out.println("method of sub class");
+   }
+   public static void main(String args[] ) {
+      Sample.demoMethod();
+   }
+}
+
+Qno. 8:- How to call a method of a subclass, if you are holding an object of the subclass in a reference variable of type superclass?
+Ans.
+person class is super class and qno4 is subclass and we have called the function of it.
+package day6;
+
+
+class Person{
+    String name;
+   int age;
+   public Person(String name, int age){
+      this.name = name;
+      this.age = age;
+   }
+   public void displayPerson() {
+      
+      System.out.println("Name: "+this.name + " " + this.age);
+   }
+}
+public class Qno4 extends Person {
+   private static final String Student_id = null;
+public String branch;
+   
+   public Qno4(String name, int age, String branch, int Student_id){
+      super(name, age);
+      this.branch = branch;
+      
+   }
+   public void displayStudent() {
+	   System.out.println("Name: "+this.branch + " " + this.age + " " + " "+super.name);
+      System.out.println("Branch: "+this.branch);
+      System.out.println("Student ID: "+this.Student_id);
+   }
+   public static void main(String[] args) {
+      Person person = new Qno4("Krishna", 20, "IT", 1256);
+      person.displayPerson();
+   }
+}
+
+

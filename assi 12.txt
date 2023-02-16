@@ -1,0 +1,714 @@
+package streamsPrc;
+
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.nio.file.FileSystem;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Scanner;
+
+import javax.print.attribute.standard.PrinterInfo;
+//Write a program to create a file and write contents, save and close the file. 
+
+class Folder<inputScanner>{
+	void createNewDir(){
+		try {
+			File f = new File("E:\\prc\\newFolder");
+			
+			f.mkdir();
+		} catch(Exception e) {
+			System.out.println("throw s");
+		}
+	}
+
+	void createFile(){
+		try {
+			File f1 = new File("E:\\prc\\new.txt");
+			f1.createNewFile();
+			File f2 = new File("E:\\prc\\new1.txt");
+			f2.createNewFile();
+			File f3 = new File("E:\\prc\\new2.txt");
+			f3.createNewFile();
+			File f4 = new File("E:\\prc\\new3.txt");
+			f4.createNewFile();
+		} catch(Exception e) {
+			
+		}
+	}
+	void writeData() {
+		try {
+			FileOutputStream fos = new FileOutputStream("E:\\prc\\newFolder\\new.txt");
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter data :");
+			String data = sc.nextLine();
+			byte [] b = data.getBytes();
+			
+			DataOutputStream dos = new DataOutputStream(fos); 
+			dos.write(b);
+			
+		} catch(Exception e) {
+			System.out.print("this is e"+e);
+			
+		}
+	}
+	
+	// Write a program to read file contents and display on console. 
+	void readData() {
+		try {
+			FileInputStream fis = new FileInputStream("E:\\prc\\newFolder\\new.txt");
+			DataInputStream dis = new DataInputStream(fis);
+			
+			InputStreamReader isr = new InputStreamReader(dis);
+			BufferedReader bfr = new BufferedReader(isr);
+			String data;
+			while( (data = bfr.readLine()) != null ) {
+				System.out.println(data);
+			}
+			
+			
+			
+		} catch (Exception e) {
+			
+		}
+	}
+	
+	
+	//Write a program to read numbers from a file and write even, odd and prime numbers to separate file. 
+	
+	void OddEvenPrime(){
+
+		String inputFileName = "E:\\prc\\newFolder\\new.txt";
+		String evenFileName = "E:\\prc\\\\newFolder\\new1.txt";
+		String oddFileName = "E:\\prc\\newFolder\\new2.txt";
+		String primeFileName = "E:\\prc\\newFolder\\new3.txt";
+
+		try {
+
+			Scanner inputScanner = new Scanner(new File(inputFileName));
+
+			FileWriter evenFileWriter = new FileWriter(evenFileName);
+			FileWriter oddFileWriter = new FileWriter(oddFileName);
+			FileWriter primeFileWriter = new FileWriter(primeFileName);
+
+			while (inputScanner.hasNextInt()) {
+				int number = inputScanner.nextInt();
+
+				if (number % 2 == 0) {
+					evenFileWriter.write(number + "\n");
+				} else if (isPrime(number)) {
+					primeFileWriter.write(number + "\n");
+				} else {
+					oddFileWriter.write(number + "\n");
+				}
+			}
+
+			inputScanner.close();
+			evenFileWriter.close();
+			oddFileWriter.close();
+			primeFileWriter.close();
+
+			System.out.println("Numbers classified");
+		} catch (Exception e) {
+			System.out.println("Error Reading or Writing");
+			e.printStackTrace();
+		}
+	}
+	
+	
+	//Write a program to append content to a file. 
+	void appendToFile(String data, String path) {
+		try {		
+		FileOutputStream fis = new FileOutputStream(path, true) ;
+		DataOutputStream dos = new DataOutputStream(fis) ;
+		byte[] b = data.getBytes() ;
+		dos.write(b);
+	    }
+		catch(Exception e) {
+			System.out.println(e) ;
+		}
+	}
+
+	
+//Write a program to compare two files. 	
+	void compareFiles() {
+		String path1 = "E:\\\\prc\\\\newFolder\\\\new.txt" ;
+		String path2 = "E:\\\\prc\\\\newFolder\\\\new1.txt";
+		try {
+		FileReader fr1 = new FileReader(path1) ;
+		FileReader fr2 = new FileReader(path2) ;
+		int i1 = -2, i2 = -2;
+		while(((i1 = fr1.read()) != -1) && ((i2 = fr2.read()) != -1)){
+			if(i1 != i2) {
+				System.out.println("The data in the files is not same") ;
+				return ;
+			}
+		}
+		
+		if((fr1.read() == -1) && (fr2.read() == -1)) {
+		System.out.println("The files contain same data") ;
+		}
+		else {
+			System.out.println("The data in the file is not same") ;
+		}
+		}
+		catch(Exception e) {
+			System.out.println(e) ;
+		}
+ 	}
+	
+	
+//Write a program to copy contents from one file to another file.
+	
+	void copyAndPaste() {
+		String copyPath = "E:\\\\prc\\\\newFolder\\\\new.txt" ;
+		String pastePath = "E:\\\\prc\\\\newFolder\\\\new1.txt" ;
+		try {
+		FileReader fr = new FileReader(copyPath) ;
+		String data = "" ;
+		int i ;
+		while((i = fr.read()) != -1) {
+			data += (char)i ;
+		}
+		FileWriter fw = new FileWriter(pastePath) ;
+		fw.write(data) ;
+		fw.flush();
+		fw.close();
+		fr.close();
+		}
+		catch(Exception e) {
+			System.out.println(e) ;
+		}		
+	}
+	void copyAndPaste1() {
+		String copyPath = "E:\\\\prc\\\\newFolder\\\\new.txt" ;
+		String pastePath = "E:\\\\prc\\\\newFolder\\\\new1.txt" ;
+		try {
+		FileReader fr = new FileReader(copyPath) ;
+		String data = "" ;
+		int i ;
+		while((i = fr.read()) != -1) {
+			data += (char)i ;
+		}
+		FileWriter fw = new FileWriter(pastePath) ;
+		fw.write(data) ;
+		fw.flush();
+		fw.close();
+		fr.close();
+		}
+		catch(Exception e) {
+			System.out.println(e) ;
+		}		
+	}
+	
+	//Write a program to merge two file to third file.
+	
+	void mergeTwoToThird() {
+		String path1 = "E:\\\\prc\\\\newFolder\\\\new.txt" ;
+		String path2 = "E:\\\\prc\\\\newFolder\\\\new1.txt" ;
+		String path3 = "E:\\\\prc\\\\newFolder\\\\new2.txt" ;
+		
+		try {
+			FileReader fr1 = new FileReader(path1) ;
+			FileReader fr2 = new FileReader(path2) ;
+			String data1 = "", data2 = "" ;
+			int i ;
+			while((i = fr1.read()) != -1) {
+				data1  += (char)i ;
+			}
+			System.out.println(data1) ;
+			while((i = fr2.read()) != -1) {
+				data2 += (char)i ;
+			}
+			System.out.println(data2) ;
+			
+			FileWriter fw = new FileWriter(path3) ;
+			fw.write(data1 + "\n" + data2) ;
+			
+			fw.flush();
+			fw.close();
+	
+		}
+		catch(Exception e) {
+			System.out.println(e) ;
+		}
+	}
+
+	
+//Write a program to count characters, words and lines in a text file.
+	
+	void countCharWordLine() {
+		String path = "E:\\prc\\newFolder\\new.txt" ;
+		int chrs = 0, words = 1 , lines = 1 ;
+		
+		try {
+			FileReader fr = new FileReader(path) ;
+			int i ;
+			while((i = fr.read()) != -1) {
+				char ch = (char)i ;
+				chrs++ ;
+				if(ch == ' ') {
+					words++ ;
+				}
+				if(ch == '\n') {
+					lines++ ;
+					words++ ;
+					chrs-- ;
+				}
+			}
+			System.out.println("Characters - " + chrs) ;
+			System.out.println("Words - " + words) ;
+			System.out.println("Lines - " + lines) ;
+			
+		}
+		catch(Exception e) {
+			System.out.println(e) ;
+		}
+	}
+
+	
+	
+	//Write a program to remove a word from text file.
+	
+	void removeWordFromFile(String word) {
+		String path = "E:\\prc\\newFolder\\new.txt" ;
+		try {
+		FileReader fr = new FileReader(path) ;
+		String data = "" ;
+		int i ;
+		while((i = fr.read() ) != -1) {
+			data += (char)i ;
+		}
+
+		String data2 = "" ;
+		int start = 0, end ;
+		while(true) {
+			end = data.indexOf(word, start) ;
+			if(end == -1) {
+				end = data.length() ;
+			}
+			data2 +=  data.substring(start, end) + " " ;
+			start = end + word.length() ;
+			if( end == data.length()) {
+				break ;
+			}
+		}
+		
+		FileWriter fw = new FileWriter(path) ;
+		fw.write(data2);
+		System.out.println(data2) ;
+
+
+		}
+		catch(Exception e) {
+			System.out.println(e) ;
+		}
+		
+	}
+	
+	
+//	Write a program to remove specific line from a text file.
+		
+	void removeLine(int exclude) {
+		try {
+			String path = "E:\\prc\\newFolder\\new.txt" ;
+			FileInputStream fis = new FileInputStream(path) ;
+			DataInputStream dis = new DataInputStream(fis) ;
+			InputStreamReader isr = new InputStreamReader(dis) ;
+			BufferedReader br = new BufferedReader(isr) ;
+			String data ;
+			String data2 = "" ;
+			int count = 1 ;
+			while((data = br.readLine()) != null) {
+				if(count != exclude) {
+					data2 += data + "\n" ;
+				}
+				count++ ;
+			}
+			System.out.println(data2) ;
+			FileWriter fw = new FileWriter(path) ;
+			fw.write(data2);
+			fw.flush();
+			fw.close();
+ 		}
+		catch(Exception e) {
+			System.out.println(e) ;
+		}
+	}
+	
+//	Write a program to remove empty lines from a text file.
+	
+	void removeEmptyLine() {
+		String path = "E:\\prc\\newFolder\\new.txt" ;
+		try {
+			FileInputStream fis = new FileInputStream(path) ;
+			DataInputStream dis = new DataInputStream(fis) ;
+			InputStreamReader isr = new InputStreamReader(dis) ;
+			BufferedReader br = new BufferedReader(isr) ;
+			String data, data2 = "" ;
+			while((data = br.readLine()) != null) {
+				if(data.length() != 0) {
+					data2 += data + '\n' ;
+				}
+			}
+			System.out.println(data2) ;
+			FileWriter fw = new FileWriter(path) ;
+			fw.write(data2);
+			
+			fw.flush();
+			fw.close();
+ 		}
+		catch(Exception e) {
+			System.out.println(e) ;
+		}
+	}
+	
+	
+//Write a program to find occurrence of a word in a text file.
+		
+	void occuranceOfChar() {
+		try {
+			String path = "E:\\prc\\newFolder\\new.txt" ;
+			Scanner myReader = new Scanner(path);
+			while (myReader.hasNextLine()) {
+				String data = myReader.nextLine();
+				System.out.println(data);
+				
+				System.out.println("Enter char to check: ");
+				char c = new Scanner(System.in).next().charAt(0);
+
+				int count = 0;
+				for (int i = 0; i < data.length() - 1; i++) {
+					if ((data.charAt(i) == c)) {
+						count++;
+					}
+				}
+
+				System.out.println(c+" comes "+count+" times in this file");
+
+			}
+
+		}
+
+		catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	
+//	Write a program to count occurrences of a word in a text file.
+	 	
+	void occuranceOFWord() {
+
+		Scanner sc = new Scanner(System.in);
+		
+			
+			String path = "E:\\prc\\newFolder\\new.txt" ;
+			try {
+				
+				Scanner myReader = new Scanner(path);
+				while (myReader.hasNextLine()) {
+					String data = myReader.nextLine();
+					System.out.println(data);
+					
+					System.out.println("Enter char to check: ");
+					char c = sc.next().charAt(0);
+
+					int count = 0;
+					for (int i = 0; i < data.length() - 1; i++) {
+						if ((data.charAt(i) == c)) {
+							count++;
+						}
+					}
+
+					System.out.println(c+" comes "+count+" times in this file");
+
+				}
+
+			}
+
+			catch (Exception e) {
+				System.out.println(e);
+			}
+	}
+	
+	
+//Write a program to count occurrences of all words in a text file.
+	
+	void  occuranceAllWords(){
+		String path = "E:\\prc\\newFolder\\new.txt" ;
+		try {
+		      inputScanner is = new Scanner(path);
+		    } catch (Exception e) {
+		      System.out.println("Input file not found.");
+		      e.printStackTrace();
+		      return;
+		    }
+
+		    List<String> words = new ArrayList()<>();
+
+		    while (is.hasNextLine()) {
+		      String line = is.nextLine();
+
+		      String[] lineWords = line.split("\\s+");
+		      for (String word : lineWords) {
+		 
+		        word = word.replaceAll("[^a-zA-Z]", "").toLowerCase();
+		        if (!word.isEmpty()) {
+		          words.add(word);
+		        }
+		      }
+		    }
+
+		    is.close();
+
+		    Collection.sort(words);
+
+		    int count = 1;
+		    for (int i = 1; i < words.size(); i++) {
+		      if (words.get(i).equals(words.get(i - 1))) {
+		        count++;
+		      } else {
+		        System.out.println(words.get(i - 1) + ": " + count);
+		        count = 1;
+		      }
+		    }
+		 
+		    System.out.println(words.get(words.size() - 1) + ": " + count);
+		  }
+	
+	
+	
+// Write a program to find and replace a word in a text file.
+		
+	void replaceWord() {
+		String path = "E:\\prc\\newFolder\\new.txt" ;
+
+		Scanner inputScanner = null;
+		try {
+			inputScanner = new Scanner(path);
+		} catch (Exception e) {
+			System.out.println("Input file not found.");
+			e.printStackTrace();
+			return;
+		}
+
+		File outputFile = new File(path);
+
+		PrinterInfo outputWriter = null;
+		try {
+			outputWriter = new PrinterInfo(outputFile);
+		} catch (Exception e) {
+			System.out.println("Error creating output file.");
+			e.printStackTrace();
+
+		}
+
+		String find = "fg";
+		String replace = "hello";
+
+		while (inputScanner.hasNextLine()) {
+			String line = inputScanner.nextLine();
+
+			line = line.replaceAll(find, replace);
+
+			outputWriter.println(line);
+		}
+
+		inputScanner.close();
+
+		outputWriter.close();
+
+		System.out.println("Word replaced successfully.");
+	}
+	
+//Write a program to replace specific line in a text file.
+	
+	void  specificLine() {
+		String path = "E:\\prc\\newFolder\\new.txt" ;
+
+		Scanner inputScanner = null;
+		try {
+			inputScanner = new Scanner(path);
+		} catch (Exception e) {
+			System.out.println("Input file not found.");
+			e.printStackTrace();
+			return;
+		}
+
+		File outputFile = new File(path);
+
+		PrinterInfo outputWriter = null;
+		try {
+			outputWriter = new PrintWriter(outputFile);
+		} catch (Exception e) {
+			System.out.println("Error");
+			e.printStackTrace();
+			return;
+		}
+
+		int lineNumber = 2;
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Line that you want to replace");
+		
+		String replacementLine = sc.nextLine();
+
+		int currentLine = 1;
+		while (inputScanner.hasNextLine()) {
+			String line = inputScanner.nextLine();
+			if (currentLine == lineNumber) {
+
+				outputWriter.println(replacementLine);
+			} else {
+
+				outputWriter.println(line);
+			}
+			currentLine++;
+		}
+
+		inputScanner.close();
+
+		outputWriter.close();
+
+		System.out.println("Line replaced");
+	}
+	
+	//Write a program to print source code of same program.
+		
+	void  sourceCode () {
+		try {
+			String path = "E:\\prc\\newFolder\\new.txt" ;
+			FileInputStream fstream = new FileInputStream(path+".java");
+			BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+			
+			String s;
+			while ((s = br.readLine()) != null) {
+				System.out.println(s);
+			}
+			fstream.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	
+	
+//	Write a program to convert uppercase to lowercase character and vice versa in a text file.
+	
+	void uppercaseToLowercase () {
+		String path = "E:\\prc\\newFolder\\new.txt" ;
+		try {
+			String content = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
+			String convertedContent = convertCase(content);
+			Files.write(path, convertedContent.getBytes(StandardCharsets.UTF_8));
+			System.out.println("File content modified");
+		} catch (Exception e) {
+			System.out.println("An error occurred: " + e);
+		}
+		String convertCase(String content) {
+			char[] characters = content.toCharArray();
+			for (int i = 0; i < characters.length; i++) {
+				char c = characters[i];
+				if (Character.isUpperCase(c)) {
+					characters[i] = Character.toLowerCase(c);
+				} else if (Character.isLowerCase(c)) {
+					characters[i] = Character.toUpperCase(c);
+				}
+			}
+			return new String(characters);
+		
+		
+	}
+		
+//		Write a program to find properties of a file using stat() function.
+			
+	void propertiesOfFile () {
+		
+		String path = "E:\\prc\\newFolder\\new.txt" ;
+		Path path1 = FileSystem.getDefault().getPath(path);
+
+		BasicFileAttributeView view = Files.getFileAttributeView(path1, BasicFileAttributeView.class);
+
+		BasicFileAttributes attribute = view.readAttributes();
+
+		System.out.print("Creation time: ");
+		System.out.println(attribute.creationTime());
+		System.out.print("Last Accessed: ");
+		System.out.println(attribute.lastAccessTime());
+
+		System.out.print("Last Modified: ");
+		System.out.println(attribute.lastModifiedTime());
+
+		System.out.println("Directory or not: " + attribute.isDirectory());
+
+		System.out.println("Size: " + attribute.size());
+	}
+
+//Write a program to check if a file or directory exists. 	
+	void fileExists() {
+		String path = "E:\\prc\\newFolder\\new.txt" ;
+		
+		Path path1 = Paths.get("C:\\Users\\amank\\Desktop\\New\\thefile.txt");
+		if (Files.exists(path1)) {
+			System.out.println("Yes, the file or directory exists");
+		} else {
+			System.out.println("No, the file or directory does not exist");
+		}
+	}
+	
+}
+
+
+
+
+
+public class fileCret {
+
+	public static void main(String[] args) {
+		Folder obj = new Folder();
+		obj.createNewDir();
+		obj.createFile();
+		
+		obj.writeData();
+		obj.readData();
+		obj.writeData();
+		obj.readData();
+		obj.OddEvenPrime();
+		obj.appendToFile("", null);
+		obj.compareFiles();
+		obj.convertCase("");
+		obj.countCharWordLine();
+		obj.copyAndPaste();
+		obj.copyAndPaste1();
+		obj.countCharWordLine();
+		obj.occuranceAllWords();
+		obj.occuranceOfChar();
+		obj.occuranceOFWord();
+		obj.removeEmptyLine();
+		obj.propertiesOfFile();
+		obj.uppercaseToLowercase();
+		obj.sourceCode();
+		obj.removeWordFromFile("");
+		obj.specificLine();
+		obj.mergeTwoToThird();
+		obj.fileExists();
+		
+	}
+
+}

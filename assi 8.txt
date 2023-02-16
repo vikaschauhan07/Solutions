@@ -1,0 +1,289 @@
+Qno. 1:- Painting Shapes In this lab exercise you will develop a class hierarchy of shapes and write a program that computes the amount ofpaint needed to paint different objects. The hierarchy will consist of a parent class Shape with three derived classes -Sphere,
+Rectangle, and Cylinder.
+Ans.
+package day8;
+
+import java.util.Scanner;
+
+abstract class Shape{
+	String shapeName;
+	abstract void area();
+	
+	
+	public String toString() {
+		return "shapeName=" + shapeName + "]";
+	}
+	
+}
+class Sphere extends Shape{
+	String shapeName;
+	public String toString() {
+		return "shapeName= " +this.shapeName;
+	}
+	@Override
+	void area() {
+		System.out.println("enter the radius:- ");
+		double radius = new Scanner(System.in).nextDouble();
+		
+		//area = 
+		System.out.println("the amount of paint needed to paint");
+		System.out.println(4*(3.14)*(radius*radius));
+	}
+	
+
+	
+	
+}
+class Rectangle extends Shape{
+	
+	String shapeName;
+	public String toString() {
+		return "shapeName= " +this.shapeName;
+	}
+	@Override
+	void area() {
+		System.out.println("enter the height:- ");
+		double a = new Scanner(System.in).nextDouble();
+		System.out.println("enter the breadth:- ");
+		double b = new Scanner(System.in).nextDouble();
+		
+		System.out.println("the amount of paint needed to paint");
+		System.out.println(a*b);
+		
+	}
+}
+class Cylinder extends Shape{
+	String shapeName;
+	public String toString() {
+		return "shapeName= " + this.shapeName;
+	}
+	@Override
+	void area() {
+		//2πrh+2πr2
+		System.out.println("enter the radius of cylinder:- ");
+		double radius = new Scanner(System.in).nextDouble();
+		System.out.println("enter the height of cylinder:- ");
+		double h = new Scanner(System.in).nextDouble();
+		
+		//area
+		System.out.println("the amount of paint needed to paint");
+		System.out.println(2*3.14*radius*(radius+h));
+	
+	}
+}
+
+
+public class Qno1 {
+	public static void main(String args[]) {
+		System.out.println("for Sphere ");
+		
+		Sphere sp = new Sphere();
+		sp.shapeName = "Sphere";
+		sp.area();
+		System.out.println(sp.toString());
+		
+		System.out.println("for retangle ");
+		
+		Rectangle rt = new Rectangle();
+		rt.shapeName = "Rectangle";
+		rt.area();
+		System.out.println(rt.toString());
+		
+		System.out.println("for cylinder ");
+		
+		Cylinder cy = new Cylinder();
+		cy.shapeName = "Cylinder";
+		cy.area();
+		System.out.println(cy.toString());
+	}
+
+}
+
+
+Qno. 2:-Is the following program written correctly? If yes, what value “result” variable will hold if you
+run the program?
+Ans.yes this code is correct and will give a+b as result.
+
+OutPut:- 20235
+
+Qno. 3:-What is the output of the following code?
+
+Ans. code will throws the ArithmeticException cuz 1/0 is'nt possible and output will be
+Exception: Division by Zero
+
+Qno.4 :-Consider you have an abstract class which is give below:
+Ans.
+package day8;
+
+import java.util.Scanner;
+
+abstract class Book{
+	String title;
+	abstract void setTitle(String s);
+	String getTitle() {
+		return title;
+	}
+}
+
+class ChildrenBook extends Book{
+	
+	@Override
+	void setTitle(String s) {
+		// TODO Auto-generated method stub
+		super.title = s;
+	}
+	
+}
+public class Qno4 {
+	public static void main(String args []) {
+		ChildrenBook cb = new ChildrenBook();
+		System.out.println("enter the title");
+		String s = new Scanner(System.in).nextLine();
+		cb.setTitle(s);
+		
+		System.out.println("Final output implements");
+		System.out.println(cb.getTitle());
+	}
+
+}
+
+
+Qno.5:-Create an abstract class 'Animals' with two abstract methods 'cats' and 'dogs'. Now create a class'Cats' with a method 'cats' which prints "Cats meow" and a class 'Dogs' with a method 'dogs'
+which prints "Dogs bark", both inheriting the class 'Animals'
+Ans.package day8;
+abstract class Animal{
+	abstract void cat();
+	abstract void dog();
+}
+
+class Cats extends Animal{
+
+	@Override
+	void cat() {
+		System.out.println("Cats meow");
+	}
+	void dog() {
+		// TODO Auto-generated method stub
+		
+	}}
+class Dogs extends Animal{
+
+	@Override
+	void cat() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void dog() {
+		System.out.println("Dogs bark");
+		
+	}}
+public class Qno5 {
+	public static void main(String args[]) {
+		Cats ct = new Cats();
+		Dogs dg = new Dogs();
+		
+		ct.cat();
+		dg.dog();
+	}
+
+}
+
+Qno. 6:-We have to calculate the percentage of marks obtained in three subjects (each out of 100) bystudent A and in four subjects (each out of 100) by student B. Create an abstract class 'Marks'
+with an abstract method 'getPercentage'. It is inherited by two other classes 'A' and 'B' eachhaving a method with the same name which returns the percentage of the students. Theconstructor of student A takes the marks
+Ans.
+package day8;
+
+import java.util.Scanner;
+
+abstract class Marks{
+	abstract void  getPercentage();
+}
+class A extends Marks{
+	int mks1;
+	int mks2;
+	int mks3;
+	A (int a, int b, int c){
+		this.mks1 = a;
+		this.mks2 = b;
+		this.mks3 = c;
+	}
+	
+	@Override
+	void getPercentage() {
+		float percent = 0.0f;
+		percent = (this.mks1 + this.mks1+this.mks1)/3;
+		System.out.println("percentage is " + percent + "%");
+		
+	}}
+class B extends Marks{
+
+	int mks1;
+	int mks2;
+	int mks3;
+	int mks4;
+	B (int a, int b, int c,int d){
+		this.mks1 = a;
+		this.mks2 = b;
+		this.mks3 = c;
+		this.mks4 = c;
+	}
+	
+	@Override
+	void getPercentage() {
+		float percent = 0.0f;
+		percent = (this.mks1 + this.mks1+this.mks1 + this.mks4)/4;
+		System.out.println("percentage is " + percent + "%");
+		
+	}
+}
+public class Qno6 {
+
+	public static void main(String[] args) {
+		System.out.println("for A");
+		Scanner sc= new Scanner(System.in);
+		System.out.println("enter the marks ");
+		A cd = new A(sc.nextInt(),sc.nextInt(),sc.nextInt());
+		cd.getPercentage();
+		
+		System.out.println("for B");
+		
+		System.out.println("enter the marks ");
+		B cd1 = new B(sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt());
+		cd1.getPercentage();
+	}
+
+}
+
+
+
+Qno. 7:-Identify the error in the following code.
+Ans.
+package day8;
+interface A {
+void m1();
+}
+public class B implements A {
+	void m1(){
+	System.out.println("One");
+}
+	
+}
+
+Error in this code is that we have to make m1 method to the public cuz when a interface is made its methods and the variables are decleared as public so while writing the body of this function we have to make it public.
+
+Qno 8:-. What will be the output of the following program?
+Ans.
+interface A {
+ int x = 10;
+ void m1();
+}
+public class B implements A {
+int x = 20;
+public void m1(){
+ System.out.println("One");
+ }
+
+
+the output of this code is One.

@@ -1,0 +1,218 @@
+Qno 1:-Explain how and why Java came into existence.
+Ans. Before java there are plenty of programming languages but they are failed to satisfy the criteria of a perfect language
+so with improvement of the languages java is found which is platform indipendent and have various application like security and backward compatible.
+
+Qno.2 :-  State the difference between JVM,JDK & JRE.
+Ans.  JVM:- Java virtual machine is the interpreter for jaba loads, verifies and executes Java bytecode.
+JDK :- The Java Development Kit is a development environment for building applications, applets, and components using the Java programming language. 
+JRE:- It acts as a translator  and providing all the resources so that  it can runs on any operating system.
+
+Qno. 3:-  Explain why is java portable.
+Ans. Java is platform-independent because it uses a virtual machine. 
+The Java programming language and all APIs are compiled into bytecodes. 
+Bytecodes are effectively platform-independent. which make it to run on any platform without any modification.
+
+
+Qno.4 :-State the difference in platform independent vs platform dependent with examples.
+
+Ans. Platform dependent means that one can run over a specific operating system or needs some specific conditions or environment to work and execute the process. Whereas the platform
+independent means it one can operate over, run and execute over any system without modifiy the specfications of the system.
+
+Windows running on x86 hardware is the example of the platform dependent.
+java is the platform independent. 
+
+Qno. 5:- Explain the difference between interpretation vs compilation and how is the performance different.
+Ans. Compilation is the process of converting the code in the byte code. Interpretation is the process of verifying the byte code and run it.
+ And the diffrence in easy words is interpreter produces a result from a program while a compiler produces a program written in assembly language(0 1).
+
+
+
+Qno 6:- What is backward compatibility and does java support this feature.
+Ans. Java supports the backward compatibility. which means hardware or software system that can  use interfaces and data from previous versions of the system or with 
+other systems. Which means it stores history or previous data or threads
+
+
+Qno. 7:-State the difference between float and double.
+Ans. Flaot is 32 bit numbers haveing 7 precision digits . Double is 64 bit having 754 double-precision floating-point number. double is more efficent then float whereas 
+it can store bigger value then the float.
+
+
+Qno. 8:-List all the operators that Java support.
+Ans. 
+Arithmetic Operators.
+Assignment Operators.
+Relational Operators.
+Logical Operators.
+Unary Operators.
+Bitwise Operators.
+
+
+
+
+
+
+
+Qno. 9:-Write a program to check whether a number is negative, positive or zero.
+Ans.:- 
+
+import java.util.*;
+class Ass1 {
+    public static void main(String[] args) {
+        
+        Scanner it = new Scanner(System.in);
+        
+        int numberToCheck = it.nextInt();
+        if(numberToCheck > 0){
+            System.out.println("positive");
+        } else if (numberToCheck < 0){
+            System.out.println("negative");
+        } else{
+            System.out.println("zero");
+        }
+    }
+}
+
+
+Qno. 10:-Write a program to find maximum between three numbers using conditional operator.
+
+Ans.:- 
+import java.util.*;
+class Ass1 {
+    public static void main(String[] args) {
+        
+        Scanner it = new Scanner(System.in);
+        System.out.println("enter the number");
+	int a = it.nextInt();
+        System.out.println("enter the number");
+	int b = it.nextInt();
+	System.out.println("enter the number");
+        int c = it.nextInt();
+        if(a > b && a > c){
+            System.out.println(a + " is the greatest");
+        } else if (b > a && b > c){
+            System.out.println(b + " is the greatest");
+        } else{
+            System.out.println(c + " is the greatest");
+        }
+    }
+}
+
+Qno. 11:- Write a program to enter P, T, R and calculate Simple Interest.
+Ans. :-
+ class Ass1 {
+    public static void main(String[] args) {
+        
+
+	float p = 20000;
+        float r = 12;
+        float t = 5;   
+        
+        float simpleInterest = (p*r*t)/100;   
+        System.out.println("Simple Interest is: " +simpleInterest);  
+        
+    }
+}
+
+
+
+
+Qno. 12:-Write a program to check whether a number is divisible by 5 and 11 or not.
+
+import java.util.*;
+class Ass1 {
+    public static void main(String[] args) {
+        Scanner it = new Scanner(System.in);
+        
+        int numberForCheck = it.nextInt();
+        
+        if((numberForCheck % 5 == 0) && (numberForCheck % 11 == 0)){
+            System.out.println(numberForCheck +  " number is divisible by  and 11");
+        } else{
+            System.out.println(numberForCheck +  " number is not divisible by  and 11");
+        }
+        
+    }
+}
+
+
+
+Qno. 13:- Write a program to input any character and check whether it is alphabet, digit or special character. 
+
+Ans. 
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("input");
+        Scanner it  = new Scanner(System.in);
+        char ch = it.next().charAt(0);
+        if(Character.isAlphabetic(ch)){
+            System.out.println("is Alphabet");
+        } else if(Character.isDigit(ch)){
+            System.out.println(" is Digit");
+        } else{
+            System.out.println(" is special Character");
+        }
+    }
+}
+
+
+
+Qno. 14:- Write a program to calculate profit or loss. 
+
+Ans. 
+import java.util.*;
+class Ass1 {
+    public static void main(String[] args) {
+        Scanner it= new Scanner(System.in);
+        System.out.println("Enter the Cost ");
+        double cost = it.nextInt();
+		System.out.println("Enter the Sell ");
+        double sell = it.nextInt();
+        
+        double diff = cost - sell;   // differnce between them for finding the profit and loss
+ 
+		if(diff >0) {
+		  System.out.println(diff + " is the loss");
+		}
+		else if(diff < 0) {
+		  System.out.println(diff + " is the profit");
+		}
+		else
+		
+		  System.out.println("No Loss ");
+        
+   }
+
+
+Qno. 15:- Write a program to find sum of all prime numbers between 1 to n.
+
+Ans. :- 
+import java.util.*;
+class Ass1 {
+    public static void main(String[] args) {
+        Scanner it= new Scanner(System.in);
+        System.out.println("Enter the number to find the sum ");
+        int n = it.nextInt();
+        int sum = 0;
+        int count = 0;
+        
+         
+        for(int j = 1; j <= n;j++){
+            for(int i = 2; i <= j/2;i++){
+                if(j % i == 0){
+                  count++;
+                  break;
+                }
+            }
+            if(count == 0 && j !=1){
+                sum = sum + j;
+            }
+            
+            
+        }
+        System.out.println("sum is " + sum);
+        
+        
+        
+    }
+}

@@ -1,0 +1,755 @@
+Qno. 1:-Write a program to display how this keyword can be used as a return type and this
+as an argument
+Ans.
+package day3;
+import java.util.*;
+
+class A{
+	B obj;
+	A(B obj,int a,int b){
+		this.obj = obj;
+		obj.sum(a,b);
+	}
+}
+class B{
+	B(int a, int b){
+		new A(this , a, b);
+		
+	}
+	void sum(int a, int b) {
+		System.out.println(a+b);
+	}
+}
+class A11{
+	B1 obj;
+	A(int a,int b){
+		this.obj = new B1().returnObject();
+		
+		obj.sum(a,b);
+	}
+}
+class B1{
+	B1 returnObject() {
+		return this;
+		
+	}
+	void sum(int a, int b) {
+		System.out.println(a+b);
+	}
+}
+
+
+
+
+
+public class Qno1 {
+	public static void main(String args[]) {
+	      int a = new Scanner(System.in).nextInt();
+	      int b = new Scanner(System.in).nextInt();
+	      new B(a,b);
+	      new A11(a,b);
+	   }
+}
+
+
+
+Qno. 2:- Write a program to display how this keyword and object of a class point to the  same memory location.
+Ans.this keyword refers to the current class instance variable.we are printing the reference variable and this, output of both variables are same.
+
+package day3;
+class thisKey{  
+		void memo(){  
+			System.out.println(this);
+		}
+}  
+	
+public class Qno2 {
+	public static void main(String args[]){  
+		thisKey obj=new thisKey();  
+		
+		System.out.println("object is printing and output");
+		System.out.println(obj);
+		System.out.println("by using this printing and output");
+		obj.memo();   
+		
+	}
+}
+
+output of program:-
+
+object is printing and output
+day3.thisKey@49e4cb85
+by using this printing and output
+day3.thisKey@49e4cb85
+
+here they reference each other at the same address.
+
+ 
+
+Qno. 3:-List the type of variables supported in java
+Ans.
+Local, 
+Instance
+Static.
+
+mainly some are defined as
+String - stores text,
+int - stores integers 
+float - stores floating numbers, 
+char - stores single characters,
+boolean - stores values : true or false
+
+
+
+Qno. 4:-Define constructors and their usage with example.
+Ans.a constructor is a method that is called at runtime during the object creation by using the new operator. it genrally respo
+nsible for the initializing of the class.
+use:-
+use to initialize the class.
+to make objects,
+memory allocation
+
+Qno. 5:-Display with an example in which order the static content(static 
+methods,blocks,main method,non static methods,class level blocks etc) executes.
+Ans.
+package day3;
+class C1{
+	static {
+		System.out.println("b 1");
+	}
+	static void printV() {
+		System.out.println("b 2");
+	}
+	static {
+		System.out.println("b 3");
+	}
+	
+	
+}
+
+static {
+	System.out.println("b 4");
+}
+public class Qno5 {	
+	static {
+		System.out.println("b 6");
+	}
+	public static void main(String args[]) {
+		System.out.println("b 5");
+		C1 c = new C1();
+	}
+}
+
+Qno. 6:-Write a program to check whether year is a leap year or not using conditional 
+operator.
+
+Ans.
+package day3;
+import java.util.*;
+public class Qno6 {
+	public static void main(String args []) {
+		 int year = new Scanner(System.in).nextInt();
+		    boolean isLeapYear;
+
+		    
+		    isLeapYear = (year % 4 == 0);
+		    isLeapYear = isLeapYear && (year % 100 != 0 || year % 400 == 0);
+
+		    if (isLeapYear) {
+		      System.out.println(year + " is a leap year.");
+		    } else {
+		      System.out.println(year + " is not a leap year.");
+		    }
+		  }
+		}
+	}
+
+}
+
+Qno. 7:-Write a program to check whether character is an alphabet or not using 
+conditional operator.
+
+Ans.
+package day3;
+import java.util.*;
+public class Qno7 {
+
+	public static void main(String[] args) {
+
+        char c = new Scanner(System.in).next().charAt(0);
+        
+        String output = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+                ? c + " alphabet."
+                : c + " not alphabet.";
+        
+        System.out.println(output);
+
+	}
+
+}
+
+Qno. 8:-Write a program to enter P, T, R and calculate Compound Interest.
+Ans.
+package day3;
+import java.util.*;
+class Interset {
+
+    void calculate(int p, int t, double r, int n) {
+        double amount = p * Math.pow(1 + (r / n), n * t);
+        double ci = amount - p;
+        System.out.println("Compound Interest is "  + ci);
+        
+    }
+public class Qno8 {
+	
+	    public static void main(String args[]) {
+	    	Scanner sc = new Scanner(System.in);
+	    	Interset ob = new Interset();
+	    	System.out.println("enter p ");
+	    	int p = sc.nextInt();
+	    	System.out.println("enter p ");
+	    	int t = sc.nextInt();
+	    	System.out.println("enter p ");
+	    	double r = sc.nextDouble();
+	    	System.out.println("enter p ");
+	    	int n = sc.nextInt();
+	    	
+	    	ob.calculate(p, t, r, n);
+	    }
+	}
+
+}
+
+
+
+Qno. 9 :- Write a program to find maximum between three numbers.
+Ans.
+package day3;
+import java.util.*;
+public class qno9 {
+
+	public static void main(String[] args) {
+		// Write a program to find maximum between three numbers. 
+		Scanner it = new Scanner(System.in);
+        System.out.println("enter the number");
+        int a = it.nextInt();
+        System.out.println("enter the number");
+        int b = it.nextInt();
+        System.out.println("enter the number");
+        int c = it.nextInt();
+        if(a > b && a > c){
+            System.out.println(a + " is the greatest");
+        } else if (b > a && b > c){
+            System.out.println(b + " is the greatest");
+        } else{
+            System.out.println(c + " is the greatest");
+        }
+
+	}
+
+}
+
+Qno 10:-Write a program to check whether a character is uppercase or lowercase alphabet.
+Ans.
+package day3;
+
+import java.util.Scanner;
+
+class ToCheck{
+	void check(char ch) {
+		if(Character.isUpperCase(ch)) {
+			 System.out.println("upper case Char");
+		} else {
+			System.out.println("lower case");
+		}
+	}
+}
+public class Qno10 {
+
+	public static void main(String[] args) {
+		// Write a program to check whether a character is uppercase or lowercase alphabet.
+		ToCheck tc = new ToCheck();
+		Scanner it = new Scanner(System.in);
+		
+		System.out.println("ebter the char");
+		char ch = it.next().charAt(0);
+		
+		tc.check(ch);
+
+	}
+
+}
+
+
+
+
+Qno. 11:-Write a program to find all roots of a quadrati equation. 
+Ans.
+package day3;
+
+import java.util.Scanner;
+
+public class Qno12 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner it = new Scanner(System.in);
+		System.out.println("enter the value for equation A");
+		
+		int a = it.nextInt();
+		System.out.println("enter the value for equation B");
+		int b = it.nextInt();
+		System.out.println("enter the value for equation C");
+		int c = it.nextInt();
+		
+		float x = (-b + (float)Math.pow(b*b-4*a*c, 1/2)/2*a);
+		float y = (-b - (float)Math.pow(b*b-4*a*c, 1/2)/2*a);
+		System.out.println("roots of quation is " + x + " " + y);
+
+	}
+
+}
+
+
+
+
+Qno. 12.Write a program to enter any number and print its prime factors.
+Ans.
+package day3;
+
+import java.util.Scanner;
+
+public class Qno11 {
+
+	public static void main(String[] args) {
+		// 12.Write a program to enter any number and print its prime factors. 
+		Scanner it = new Scanner(System.in);
+        System.out.println("enter the number");
+        int a = it.nextInt();
+        
+        for(int i = 2;i <=a;i++) {
+        	int n = a;
+        	if(isPrime(i)) {
+        		while(n%i==0) {
+        			System.out.println(i + " ");
+        			n/=i;
+        		}
+        	}
+        }
+
+	}
+
+	
+	public static boolean isPrime (int n){
+		boolean con = true;
+		for(int i = 2;i<n/2;i++) {
+			if(n%i == 0) {
+				con = false;
+			} 
+			
+		}
+		return con;
+	}
+}
+Qno. 13:-Write a program to print all Armstrong numbers between 1 to n
+Ans.
+
+package day3;
+import java.util.*;
+class NumCheck{
+	 boolean isArmstrongNumber(int n) {
+	        int sum = 0;
+	        int rightDigit;
+	        int temp = n;
+	        
+	        while (temp != 0) {
+	            rightDigit = temp % 10;
+	            sum = sum + (rightDigit * rightDigit * rightDigit);
+	            temp = temp / 10;
+	        }
+	        
+	        if (sum == n) {
+	            return true;
+	        } else {
+	            return false;
+	        }
+	    }
+	
+}
+public class Qno13 {
+	
+	    public static void main(String[] args) {
+	    	Scanner sc = new Scanner(System.in);
+	    	System.out.println("Enter a Number");
+	    	double num = sc.nextFloat();;
+	        NumCheck nc = new NumCheck();
+	        for (int i = 0; i < num; i++) {
+	            if (nc.isArmstrongNumber(i)) {
+	                System.out.println(i + " ");
+	            }
+	        }
+	    }
+}
+
+
+Qno. 14:-Write a program to convert Hexadecimal to Decimal number system.
+Ans.
+package day3;
+import java.util.*;
+
+class Check{
+	 int getDecimal(String hex){  
+	    String digits = "0123456789ABCDEF";  
+	             hex = hex.toUpperCase();  
+	             int val = 0;  
+	             for (int i = 0; i < hex.length(); i++)  
+	             {  
+	                 char c = hex.charAt(i);  
+	                 int d = digits.indexOf(c);  
+	                 val = 16*val + d;  
+	             }  
+	             return val;  
+	}  
+}
+public class Qno14 {
+	public static void main(String args[]) {
+		Check ck = new Check();
+		System.out.println("ether the input: ");
+		String inp = new Scanner(System.in).nextLine();
+		System.out.println(ck.getDecimal(inp));
+	}
+	
+
+}
+
+
+Qno. 15:-Write a program to find HCF (GCD) & LCM of two numbers. 
+Ans.
+package day3;
+
+import java.util.Scanner;
+
+public class Qno15 {
+	public static void main(String args []) {
+		//15.Write a program to find HCF (GCD) & LCM of two numbers. 
+		Scanner it = new Scanner(System.in);
+        System.out.println("enter the number");
+        int a = it.nextInt();
+        System.out.println("enter the number");
+        int b = it.nextInt();
+        
+        System.out.println("lcm is " + Lcm(a,b));
+        System.out.println("lcm is " + Hcf(a,b));
+		
+	}
+	static int Lcm(int a, int b) {
+		int  lcm = (a*b)/Hcf(a,b);
+		return lcm;
+	} 
+	static int Hcf(int a, int b) {
+		int hcf = 0;
+		for(int i = 0;i < a && i < b;i++) {
+			if((a%i == 0) && (b% i ==0)) {
+				hcf = i;
+			}
+		}
+		return hcf;
+	}
+
+}
+
+
+Qno. 16:-Write a program to find roots of a quadrati equation using switch case.
+Ans.
+package day3;
+
+import java.util.Scanner;
+
+public class Qno16 {
+
+	public static void main(String[] args) {
+		// Write a program to find roots of a quadrati equation using switch case.
+		
+		Scanner it = new Scanner(System.in);
+		System.out.println("enter the value for equation A");
+		
+		int a = it.nextInt();
+		System.out.println("enter the value for equation B");
+		int b = it.nextInt();
+		System.out.println("enter the value for equation C");
+		int c = it.nextInt();
+		
+		int d = (b*b) - (4* a*c);
+		double a1 = 0.0;
+		double b1 = 0.0;
+		int caseS = valueForSw(d);
+		switch(caseS) {
+		case 0:
+			a1 = b1 = -(b1/2*a1);
+			System.out.println("roots "+a1 + " " + b1);
+		    break;
+		case -1:
+			a1 = (-b1 + (float)Math.pow(b1*b1-4*a1*c, 1/2)/2*a1);
+			b1 = (-b1 - (float)Math.pow(b1*b1-4*a1*c, 1/2)/2*a1);
+			System.out.println("roots "+a1 + " " + b1);
+			break;
+		case 1:
+			a1 = (-b1 + (float)Math.pow(b1*b1-4*a1*c, 1/2)/2*a1);
+			b1 = (-b1 - (float)Math.pow(b1*b1-4*a1*c, 1/2)/2*a1);
+			System.out.println("roots "+a1 + " " + b1);
+			
+		}
+
+	}
+	static int valueForSw(double d) {
+		
+		if(d>0) {
+			return 1;
+		}else if(d == 0) {
+			return 0;
+		}else {
+			return -1;
+		}
+	} 
+
+}
+
+Qno 17:-Write a program to copy all elements from an array to another array.
+Ans.
+package day3;
+import java.util.*;
+
+
+class copyArray{
+	void copied(int [] arr) {
+		int arr1[] = new int[arr.length];
+		for(int i = 0;i < arr.length;i++) {
+			arr1[i] = arr[i] ;
+		}
+		System.out.println("coping the array");
+		for(int i = 0;i < arr.length;i++) {
+			System.out.print(arr[i] + " ");
+		}
+		
+	}
+	
+}
+
+public class Qno17 {
+	public static void main(String args []) {
+		//17.Write a program to copy all elements from an array to another array.
+		System.out.println("enter the number of element you want in array");
+		Scanner it = new Scanner(System.in);
+		int n = it.nextInt();
+		copyArray ar = new copyArray();
+		
+		
+		System.out.println(" enter the element of array ");
+		int [] arr = new int[n];
+		
+		for(int i = 0;i < n;i++) {
+			arr[i] = it.nextInt();
+		}
+		
+		
+		ar.copied(arr);
+		
+		
+		
+	}
+
+}
+
+Qno. 18:-Write a program to delete an element from an array at specified position.
+Ans
+package day3;
+import java.util.*;
+
+
+class delEleMent{
+	void delFromArr(int [] arr) {
+		System.out.print("Enter the element you want to delete:");
+        int x = new Scanner(System.in).nextInt();
+        int n = arr.length;
+        boolean isThere = false;
+        int indexNo = 0;
+        for (int i = 0; i < n; i++) 
+        {
+            if(arr[i] == x)
+            {
+                
+                isThere = true;
+                indexNo = i;
+                break;
+            }
+            else
+            {
+                
+                isThere = false;
+            }
+        }
+        if(isThere)
+        {
+            for(int i = indexNo+1; i < n; i++)
+            {
+                arr[i-1] = arr[i];
+            }
+            System.out.print("After Deleting:");
+            for (int i = 0; i < n-2; i++) 
+            {
+                System.out.print(arr[i]+",");
+            }
+            System.out.print(arr[n-2]);
+        }
+        else
+        {
+            System.out.println("did'nt");
+        }
+		
+	}
+}
+
+
+
+
+
+public class Qno18 {
+	public static void main(String[] args) {
+		System.out.println("enter the number of element you want in array");
+		Scanner it = new Scanner(System.in);
+		int n = it.nextInt();
+		
+		System.out.println(" enter the element of array ");
+		int [] arr = new int[n];
+		
+		for(int i = 0;i < n;i++) {
+			arr[i] = it.nextInt();
+		}
+		
+		delEleMent dl = new delEleMent();
+		dl.delFromArr(arr);
+		
+        
+    }
+
+}
+
+Qno.19:-Write a program to delete all duplicate elements from an array
+Ans
+package day3;
+
+import java.util.Scanner;
+
+
+class delEleMents2{
+	int  deleteDuplicateLength(int [] arr) {
+		 int[] temp = new int[arr.length];  
+	        int j = 0;  
+	        for (int i=0; i< arr.length-1; i++){  
+	            if (arr[i] != arr[i+1]){  
+	                temp[j++] = arr[i];  
+	            }  
+	         }  
+	        temp[j++] = arr[arr.length -1];     
+	         
+	        for (int i=0; i<j; i++){  
+	            arr[i] = temp[i];  
+	        }  
+	        return j;
+
+		
+	}
+}
+
+public class Qno19 {
+	//Write a program to delete all duplicate elements from an array
+	public static void main(String[] args) {
+		System.out.println("enter the number of element you want in array");
+		Scanner it = new Scanner(System.in);
+		int n = it.nextInt();
+		
+		System.out.println(" enter the element of array ");
+		int [] arr = new int[n];
+		
+		for(int i = 0;i < n;i++) {
+			arr[i] = it.nextInt();
+		}
+		
+		delEleMents2 dl = new delEleMents2();
+		int length1 = dl.deleteDuplicateLength(arr);
+		for(int i = 0;i < length1;i++) {
+			System.out.println(arr[i] + " ");
+		}
+    }
+	
+       
+
+}
+
+Qno. 20:-Write a program to put even and odd elements of array in two separate array
+Ans.
+package day3;
+import java.util.*;
+
+class ChangeInArray{
+	
+	int[] evenArray(int [] arr) {
+		int eve [] = new int[arr.length];
+		for(int i = 0;i < arr.length;i++) {
+			if(arr[i] % 2== 0) {
+				eve[i] = arr[i];
+				}
+		}
+		return eve;
+		
+	}
+	int[] oddArray(int [] arr) {
+		int odd [] = new int[arr.length];
+		for(int i = 0;i < arr.length;i++) {
+			if(arr[i] % 2!= 0) {
+				odd[i] = arr[i];
+				}
+		}
+		return odd;
+		
+	}
+	void printArray(int [] arr) {
+		for(int i = 0;i < arr.length;i++) {
+			
+				System.out.print(arr[i] + " ");
+				
+		}
+	}
+	
+	
+	
+}
+
+
+
+public class Qno20 {
+	public static void main(String args[]) {
+		System.out.println("enter the number of element you want in array");
+		Scanner it = new Scanner(System.in);
+		int n = it.nextInt();
+		
+		System.out.println(" enter the element of array ");
+		int [] arr = new int[n];
+		
+		for(int i = 0;i < n;i++) {
+			arr[i] = it.nextInt();
+		}
+		
+		System.out.println("odd array");
+		ChangeInArray ar = new ChangeInArray();
+		int [] oar = ar.oddArray(arr);
+		ar.printArray(oar);
+		System.out.println("even array");
+		
+		int [] ear = ar.evenArray(arr);
+		ar.printArray(ear);
+	}
+
+}
+
+

@@ -1,0 +1,49 @@
+Q 1. What is Compile time polymorphism (Static polymorphism)?
+
+Ans Compile time polymorhism is also known as the static pomyorphism. It is the  type of polimorphism which is resolved during the compile time of the program. 
+Overloading of methods is called through the reference variable of a class.
+
+
+Q 2. What is Run time polymorphism (Dynamic polymorphism)?
+
+Ans Runtime polymorphism, also known as the Dynamic Method Dispatch, is a process that resolves a call to an overridden method at runtime. The process involves the use of the reference
+variable of a superclass to call for an overridden method.
+
+
+
+Ques 3.Is there any errors in the following code? Will the code compile successfully?
+Ans Yes there are 2 errors in the code, but the code gets compiled successfully.
+
+
+
+Ques 4.Will the code compile successfully? If yes, what will be the output of the program?
+Ans  Yes, this program will get compiled successfully
+The output of this program will be:-
+m1 method in class A
+m1 method in class A
+m1 method in class B
+m1 method in class B
+m1 method in class B
+
+
+Q 5. List the types of binding in java and explain with the help of an example.
+Ans There are two types of Binding: Static and Dynamic Binding in Java. If the compiler maps the method at compile-time, it is Static Binding or early binding. And, if the method is resolved at runtime, it is Dynamic Binding or late binding.
+
+
+Q 6. Why do we need final keyword in Java?
+Ans. Final keyword is used to provide a value to the vaiable that does not change after the execution.
+The final keyword is useful when we want a variable to always store the same value.
+for example,
+final int v = 2;
+
+
+Q 7.Is there any error in the below code snippet? If not, what will be the output of the
+following program?
+Ans. No, there are no errors in this code, this program will get compiled successfully
+The output of this program will be:-
+20.
+
+Ques 8. What is a blank final variable in Java?
+Ans. A variable whose access specifier is defined as "final" and it has not been initialized and has no value.
+for example,
+final int y;

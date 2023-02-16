@@ -1,0 +1,416 @@
+Qno. 1:- State a real life example of encapsulation in java.
+Ans.
+package day4;
+class Employee{  
+	private String name;  
+   
+	public String getName(){	  
+		return name;  
+	}  
+	public void setName(String name){  
+		this.name=name;
+	}  
+}  
+
+public class qno1 {
+	public static void main(String args[]) {
+		Employee e=new Employee();  
+		e.setName("Harry");  
+		System.out.println(e.getName());
+	}
+}
+
+Qno. 2:-Explain with an example how encapsulation helps in data hiding.
+Ans.the programmer hides the object member’s structures and hides the implementation of all its methods.
+data encapsulation focuses on wrapping  the complex data to present a simpler view to the user. 
+Data encapsulation refers to the bundling of data and their related functions into a single unit called class. you can hide delicate information and regulate access to the internal state of the 
+thing.depending on the methods you implement, you are at an onus to decide if an attribute can be read and changed or if it’s read-only or not visible at all. 
+
+
+public class EncapTest {
+   private String name;
+   private String idNum;
+   private int age;
+
+   public int getAge() {
+      return age;
+   }
+
+   public String getName() {
+      return name;
+   }
+
+   public String getIdNum() {
+      return idNum;
+   }
+
+   public void setAge( int newAge) {
+      age = newAge;
+   }
+
+   public void setName(String newName) {
+      name = newName;
+   }
+
+   public void setIdNum( String newId) {
+      idNum = newId;
+   }
+}
+Qno. 3:-Explain the significance of POJO classes.
+Ans.
+POJO stands for Plain Old Java Object. It is an ordinary Java object, not bound by any special restriction.
+not requiring any classpath. 
+POJOs are used for increasing the readability and re-usability of a program.
+they are easy to write and understand. 
+The POJO class can be accessed by using their names.
+
+
+Qno. 4:- Explain the need for Nested classes and types of Nested classes.
+Ans
+need:-
+nested clasess represent a particular type of relationship which helps us to can access all the members (data members and methods)of the outer class, including private
+it help to develop more readable and maintainable code because it logically group classes and interfaces in one place only.
+It requires less code to write.
+types:-
+it is of two types Non-static nested class , Static nested class
+
+
+Qno 5:-State any 5 classes/Interfaces which are nested/Inner classes with example.
+Ans.
+String (implements three interfaces viz. Serializable, Comparable and CharSequence)
+Character ( implement Serializable, Comparable<Character>)
+ArrayList (class extends AbstractList and implements the List interface)
+InputStream (class of the java.io package is an abstract superclass that represents an input stream)
+HashSet (it implements the Set interface in java)
+
+Qno. 6:-Write a program to sort array elements in descending order.
+Ans.
+package day4;
+
+import java.util.Scanner;
+
+public class Qno6 {
+
+	public static void main(String[] args) {
+		// Write a program to sort array elements in ascending order.
+		System.out.println("enter the number of element you want in array");
+		Scanner it = new Scanner(System.in);
+		int n = it.nextInt();
+		
+		System.out.println(" enter the element of array ");
+		int [] arr = new int[n];
+		
+		for(int i = 0;i < n;i++) {
+			arr[i] = it.nextInt();
+		}
+		
+		int temp = 0;    
+		for (int i = 0; i < arr.length; i++) {     
+	           for (int j = i+1; j < arr.length; j++) {     
+	              if(arr[i] < arr[j]) {    
+	                  temp = arr[i];    
+	                  arr[i] = arr[j];    
+	                  arr[j] = temp;    
+	               }     
+	            }     
+	        }
+		int sortArr [] =  new int[n];
+		for(int i = 0; i < n;i++) {
+			sortArr[i] = arr[i];
+		}
+		System.out.println(sortArr);
+		for(int i = 0;i< sortArr.length;i++) {
+			System.out.println(sortArr[i] + " ");
+		}
+	        
+	}
+
+}
+
+
+
+Qno. 7:-Write a program to check whether a string is palindrome or not.
+Ans.
+package day3;
+
+import java.util.*;
+public class Qno7 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Enter the String to Check Palindrom ");
+		String  str = new Scanner(System.in).nextLine(); 
+		if(palindChe(str)) {
+			System.out.println(" is palindrom ");
+		} else {
+			System.out.println(" not palindrom ");
+		}
+	}
+	
+	
+	
+	static boolean palindChe(String str) {
+		StringBuilder st = new StringBuilder(str);
+		st.reverse();
+		String reverseString = st.toString();
+		if(reverseString.equals(str)) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+
+}
+ 
+Qno. 8 :- Write a program to find highest frequency character in a string.
+Ans.
+package day4;
+import java.util.*;
+public class Qno8 {
+	public static void main(String args []) {
+		String str = new Scanner(System.in).nextLine();  
+        int[] freq = new int[str.length()];  
+        char maxChar = str.charAt(0);  
+        int max;          
+          
+        char string[] = str.toCharArray();  
+         
+        for(int i = 0; i < string.length; i++) {  
+            freq[i] = 1;  
+            for(int j = i+1; j < string.length; j++) {  
+                if(string[i] == string[j] && string[i] != ' ' && string[i] != '0') {  
+                    freq[i]++;  
+                      
+                    string[j] = '0';  
+                }  
+            }  
+        }  
+          
+        
+        max = freq[0];  
+        for(int i = 0; i <freq.length; i++) {  
+            
+            if(max < freq[i]) {  
+                max = freq[i];  
+                maxChar = string[i];  
+            }  
+        }  
+          
+          
+        System.out.println("Maximum occurring character: " + maxChar);  
+	}
+}
+
+
+Qno. 9:-WAP to find the occurrence of each digit in a number.
+Ans.
+package day4;
+import java.util.*;
+public class Qno9 {
+	public static void main(String args []) {
+		Scanner scanner = new Scanner(System.in); 
+		  System.out.println("Enter the number"); 
+		  int number = scanner.nextInt(); 
+		  
+		  int[] digitArray = new int[10]; 
+		  int remainder = 0; 
+		  
+		  while (number > 0) { 
+		    
+		    remainder = number % 10; 
+		    
+		    digitArray[remainder]++; 
+		    
+		    number = number / 10; 
+		  } 
+		  
+		  for (int counter = 0; counter < digitArray.length; counter++) { 
+		    
+		    int digitCount = digitArray[counter]; 
+		    if (digitCount != 0) { 
+		      System.out.println(counter + "\t" + digitCount); 
+		    } 
+		  } 
+		  
+
+}
+
+Qno. 10:-WAP to reverse a string by capitalize the first letter of every word.
+Ans.
+package day4;
+import java.util.*;
+class reverse{
+	String revSr(String str) {
+		StringBuilder st = new StringBuilder(str);
+		st.reverse();
+		String reverseString = st.toString();
+		return reverseString;
+		
+	}
+}
+public class Qno10 {
+	public static void main(String args[]) {
+		 System.out.println("enter the input ");
+	    String str = new Scanner(System.in).nextLine();
+	    
+	    reverse re = new reverse();
+	    
+	    
+	    String rev = re.revSr(str);
+	    char[] charArray = rev.toCharArray();
+	    boolean foundSpace = true;
+	    for(int i = 0; i < charArray.length; i++) {
+
+	      if(Character.isLetter(charArray[i])) {
+	    	  if(foundSpace) {
+	    		  charArray[i] = Character.toUpperCase(charArray[i]);
+	    		  foundSpace = false;
+	        }
+	      }
+	      else {
+	        
+	        foundSpace = true;
+	      }
+	    }
+
+	    rev = String.valueOf(charArray);
+	    System.out.println("reversed string " + rev);
+	}
+}
+
+
+
+Qno. 11:-wha is the output of this program.
+
+class X{
+	static int x = 3131;
+	static class Y{
+		static int y = x++;
+		static class Z {
+			static int z = y++;
+		}
+	}
+}
+public class MainClass {
+
+	public static void main(String[] args) {
+		System.out.println(X.x);
+		System.out.println(X.Y.y);
+		System.out.println(X.Y.Z.z);
+
+	}
+
+}
+Ans. 
+3131
+3131
+3131
+because the x is static and memory will be assinged only once to it.
+
+
+
+Qno. 12:-Can you find out the error in the following code?
+Ans.
+class A{
+	class B {
+		static void methodB() {
+			System.out.println("Method B");
+		}
+	}
+}
+
+didn't have any error it could easily be called after the constructor made for them seprately.
+
+
+Qno. 13:-.How do you access field ‘i’ of class ‘XYZ’ in the below example?
+
+Ans.
+package day4;
+class ABC{
+	class XYZ{
+		int i =111;
+	}
+}
+public class Qno13 {
+	public static void main(String args[]) {
+		ABC df = new ABC();    // object of abc
+		ABC.XYZ df1 = df.new XYZ(); // object of xyz using the abc
+		
+		System.out.println(df1.i);
+	}
+}
+
+Qno. 14:-
+Ans.
+package encapsulationTest;
+import java.util.*;
+class Student{
+	 private String stdName; 
+	 private int stdRollNo;
+	 private int stdId;
+	public String getStdName() {
+		return stdName;
+	}
+	public void setStdName(String stdName) {
+		this.stdName = stdName;
+	}
+	public int getStdRollNo() {
+		return stdRollNo;
+	}
+	public void setStdRollNo(int stdRollNo) {
+		this.stdRollNo = stdRollNo;
+	}
+	public int getStdId() {
+		return stdId;
+	}
+	public void setStdId(int stdId) {
+		this.stdId = stdId;
+	}
+	@Override
+	public String toString() {
+		return "Student [stdName=" + stdName + ", stdRollNo=" + stdRollNo + ", stdId=" + stdId + "]";
+	}
+	
+	 
+}
+class ModelClass extends Student{
+	public ModelClass() {
+		super();
+		
+	}
+	public String toString() {
+		return "Student [stdName=" + super.getStdName() + ", stdRollNo=" + super.getStdRollNo() + ", stdId=" + super.getStdId() + "]";
+	}
+}
+
+
+public class EncapTest {
+	public static void main(String args[]) {
+		Student st = new ModelClass();
+		
+		
+		System.out.println("enter the name");
+		st.setStdName(new Scanner(System.in).nextLine());
+		System.out.println("enter the rollno. ");
+		st.setStdRollNo(new Scanner(System.in).nextInt());
+		System.out.println("enter the id ");
+		st.setStdId(new Scanner(System.in).nextInt());
+		
+		System.out.println("enter the detais of 2nd student  ");
+		
+		Student st1 = new ModelClass();
+		System.out.println("enter the name");
+		st1.setStdName(new Scanner(System.in).nextLine());
+		System.out.println("enter the rollno. ");
+		st1.setStdRollNo(new Scanner(System.in).nextInt());
+		System.out.println("enter the id ");
+		st1.setStdId(new Scanner(System.in).nextInt());
+		
+		System.out.println(st.toString());
+		System.out.println(st1.toString());
+		
+	}
+
+}
+

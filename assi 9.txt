@@ -1,0 +1,258 @@
+Qno. 1:-Take values of length and breadth of a rectangle from user and check if it is square or not.
+Ans.
+package day9;
+
+import java.util.Scanner;
+
+//Take values of length and breadth of a rectangle from user and check if it is square or not.
+public class Qno1 {
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" enter the length: ");
+		int a = sc.nextInt();
+		
+		System.out.println(" enter the breadth: ");
+		int b = sc.nextInt();
+		
+		if(a==b) {
+			System.out.println("Square");
+		} else {
+			System.out.println("Rectangle");
+		}
+	}
+
+}
+
+Qno. 2:-A shop will give discount of 10% if the cost of purchased quantity is more than 1000. Ask user for quantity Suppose, one unit will cost 100. Judge and print total cost for user.
+Ans.
+package day9;
+
+import java.util.Scanner;
+
+//A shop will give discount of 10% if the cost of purchased quantity is more than 1000.
+//Ask user for quantity
+//Suppose, one unit will cost 100.
+//Judge and print total cost for user.
+public class Qno2 {
+	public static void main(String args []) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" enter the Quantity ");
+		int a = sc.nextInt();
+		
+		int costForPurcahse = a*100;
+		
+		if(costForPurcahse >= 1000) {
+			System.out.println("total bill: " + (costForPurcahse-costForPurcahse/10));
+		} else {
+			System.out.println("Total bill: " + costForPurcahse);
+		}
+	}
+	
+
+}
+
+Qno 3.:-A company decided to give bonus of 5% to employee if his/her year of service is more than 5 years.
+Ans.
+package day9;
+
+import java.util.Scanner;
+
+//A company decided to give bonus of 5% to employee if his/her year of service is more than 5
+//years.
+public class Qno3 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" enter the no year of service: ");
+		int a = sc.nextInt();
+		
+		System.out.println(" enter the salary: ");
+		double sal = sc.nextInt();
+		
+		if(a>5) {
+			System.out.println("total salry: " + (sal+sal/5));
+		} else {
+			System.out.println("Total bill: " + sal);
+		}
+	}
+
+}
+
+Qno. 4:-A student will not be allowed to sit in exam if his/her attendence is less than 75%.
+Take following input from user
+Number of classes held
+Number of classes attended.
+And print
+percentage of class attended
+Is student is allowed to sit in exam or not.
+Ans.
+package day9;
+
+import java.util.Scanner;
+
+
+public class Qno3 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" enter the no of classes held: ");
+		int a = sc.nextInt();
+		
+		System.out.println(" no of classes attened by student: ");
+		int cal = sc.nextInt();
+		float percen = (cal/a)*100;
+		System.out.println("percentage of attandence: " + percen);
+		if(percen< 75) {
+			System.out.println("not allowed");
+		} else {
+			System.out.println("allowed");
+		}
+	}
+
+}
+
+
+Qno 5:-Write a program to find out whether a student is pass or fail; if it requires a total of 40% and at least 33% in each subject to pass. Assume 3 subjects and take marks as input from the user. 
+Ans.
+package day9;
+
+import java.util.Scanner;
+
+public class Qno3 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" enter the percentage of marks get in each class: ");
+		float a = sc.nextInt();
+		float b = sc.nextInt();
+		float c = sc.nextInt();
+		
+		
+		if(a >= 33 && b >= 33 && c >= 33) {
+			System.out.println("pass and total percentage is: " + ((a+b+c)/3));
+		} else {
+			System.out.println("failed ");
+		}
+	}
+
+}
+
+Qno 6:-Write a program in Java to display n terms of natural numbers and their sum 
+Ans.
+package day9;
+
+import java.util.Scanner;
+public class Qno3 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" enter the number: ");
+		int n = sc.nextInt();
+		for(int i =1;i <= n;i++) {
+			System.out.print(i + " ");
+		}
+		System.out.println("sum of " + n + " natural number is: " + ((n*(n+1))/2));
+	}
+
+}
+
+Qno. 7:-Write a program in Java to input 5 numbers from keyboard and find their sum and average. 
+Ans.
+package day9;
+
+import java.util.Scanner;
+
+// Write a program in Java to input 5 numbers from keyboard and find their sum and average. 
+public class Qno3 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" enter number: ");
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		int c = sc.nextInt();
+		int d = sc.nextInt();
+		int e = sc.nextInt();
+		
+		System.out.println("sum of numbers is: " + (a+b+c+d+e));
+		System.out.println("average of numbers is: " + ((a+b+c+d+e)/5));
+		
+	}
+
+}
+
+Qno. 8:-Write a program in Java to display the cube of the number upto given an integer. 
+Ans. 
+package day9;
+
+import java.util.Scanner;
+
+public class Qno3 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" enter the number: ");
+		int n = sc.nextInt();
+		System.out.println("cubes are: ");
+		for(int i =1;i <= n;i++) {
+			System.out.print((i*i*i) + " ");
+		}
+		
+	}
+		
+	
+
+}
+
+Qno 9:-Write a program in Java to display the multiplication table of a given integer
+Ans.
+package day9;
+
+import java.util.Scanner;
+public class Qno3 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" enter the number: ");
+		int n = sc.nextInt();
+		System.out.println("table is: ");
+		for(int i =1;i <= 10;i++) {
+			System.out.println(n + "*" + i + "="+(n*i));
+		}
+		
+	}
+	
+}
+
+Qno. 10:-Write a program in Java to display the pattern like right angle triangle with a number
+Ans.
+package day9;
+
+import java.util.Scanner;
+public class Qno3 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" enter the number: ");
+		int n = sc.nextInt();
+		
+		for(int i =0;i < n;i++) {
+			for(int j =0;j <=i;j++) {
+				System.out.print(n+" ");
+			}
+			System.out.println();
+		}
+		
+	}
+
+}
+
+Output:-
+4
+
+4 
+4 4 
+4 4 4 
+4 4 4 4 
+
+

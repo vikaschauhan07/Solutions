@@ -1,0 +1,304 @@
+Qno1.:- Java program to convert the temperature in Degree Centigrade to Fahrenheit
+Ans.
+package day11;
+
+import java.util.Scanner;
+
+public class Qno1 {
+	public static void main(String args []) {
+		//(30°C x 1.8) + 32
+		System.out.println("enter temp in celius ");
+		float temp = new Scanner(System.in).nextFloat();
+		
+		System.out.println("converted temp is " + ((temp * (1.8)) + 32) + "Ferh");
+		
+	}
+}
+Qno. 2:-Java program to find the circumference and area of a circle with a given radius
+Ans.
+package day11;
+
+import java.util.Scanner; 
+public class Qno2 {
+	public static void main(String args []) {
+		
+		System.out.println("enter radius ");
+		double temp = new Scanner(System.in).nextDouble();
+		
+		System.out.println("area is " + (3.14 * temp * temp));
+		System.out.println("circumference is " + (3.14 * 2 * temp) );
+		
+		
+		
+	}
+}
+
+Qno. 3:-Java program to display all integers within the range 100-150 whose sum of digits
+// is an even number
+Ans.
+package day11;
+
+import java.util.Scanner;
+public class Qno2 {
+	public static void main(String args []) {
+		
+		for(int i = 100; i<=150;i++) {
+			
+			int sum = 0;
+			int temp = i;
+			for(int j = 1;j<i;j++) {
+				int digit = 0;
+				digit = temp %10;
+				temp = temp/10;
+				sum = sum + digit;
+				//System.out.println(digit);
+				if(temp == 0) {
+					break;
+				}
+				
+			}
+			if(sum % 2 == 0) {
+				System.out.println(" even is " + i);
+				
+			}
+		}
+	}
+}
+
+Qno. 4:-Java program to find the roots of a quadratic equation
+Ans. 
+package day11;
+
+import java.util.Scanner;
+public class Qno2 {
+	public static void main(String args []) {
+		
+		Scanner it = new Scanner(System.in);
+		System.out.println("enter the value for equation A");
+		
+		int a = it.nextInt();
+		System.out.println("enter the value for equation B");
+		int b = it.nextInt();
+		System.out.println("enter the value for equation C");
+		int c = it.nextInt();
+		
+		float x = (-b + (float)Math.pow(b*b-4*a*c, 1/2)/2*a);
+		float y = (-b - (float)Math.pow(b*b-4*a*c, 1/2)/2*a);
+		System.out.println("roots of quation is " + x + " " + y);
+	}
+}
+
+Qno. 5:-Java program to print the numbers from a given number n till 0 using recursion
+
+Ans.
+package day11;
+
+import java.util.Scanner;
+
+public class Qno2 {
+	public static void main(String args []) {
+		
+		System.out.println("enter the number");
+		printNumber(new Scanner(System.in).nextInt());
+	}
+	static void printNumber(int n) {
+		System.out.println(n);
+		if(n!=0) {
+			printNumber(n-1);
+		}
+	}
+}
+
+Qno. 6:-Two numbers are entered through the keyboard. Write a program to find the value of one
+number raised to the power of another. (Do not use Java built-in method) 
+
+Ans.
+package day11;
+
+import java.util.Scanner;
+public class Qno2 {
+	public static void main(String args []) {
+		
+		System.out.println("enter the number");
+		int n = new Scanner(System.in).nextInt();
+		
+		System.out.println("enter the power you want");
+		int o = new Scanner(System.in).nextInt();
+		double pow = 1.0;
+		for(int i =1; i <= o;i++) {
+			pow = pow * n;
+		}
+		System.out.println(n + " raise to power " + o +" is:- "+ pow);
+	
+	
+	}
+	
+}
+
+Qno. 7:-Write a do-while loop that asks the user to enter two numbers. The numbers should be added
+and the sum displayed. The loop should ask the user whether he or she wishes to perform the
+operation again. If so, the loop should repeat; otherwise it should terminate. 
+
+Ans.
+package day11;
+
+import java.util.Scanner;
+public class Qno2 {
+	public static void main(String args []) {
+		
+		boolean f = false;
+		do {
+			System.out.println("enter the number");
+			int n = new Scanner(System.in).nextInt();
+			
+			System.out.println("enter the number");
+			int o = new Scanner(System.in).nextInt();
+			System.out.println("sum is " + (n+o));
+			System.out.println("press A or a if want to continue else press anything excpt enter");
+			
+			int t = new Scanner(System.in).next().charAt(0);
+			if(t == 'a' || t == 'A') {
+				f = true;
+			}
+		} while(f);
+	
+	
+	}
+	
+}
+
+Qno. 8:-Write a program to enter the numbers till the user wants and at the end the program should
+display the largest and smallest numbers entered. 
+Ans. 
+package day11;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+
+public class Qno2 {
+	public static void main(String args []) throws InputMismatchException {
+		ArrayList<Integer> arr = new ArrayList<>();
+		try {
+			boolean f = true;
+			do {
+				System.out.println("enter the number");
+				int n = new Scanner(System.in).nextInt();
+				arr.add(n);
+			
+				System.out.println("press E or e if want to end");
+				int t = new Scanner(System.in).next().charAt(0);
+				if(t == 'e' || t == 'E') {
+					f = false;
+				}
+			} while(f);
+			System.out.println("maximum enterd :- " + maxNmuber(arr));
+			System.out.println("maximum enterd :- " + minNmuber(arr));
+		} catch(InputMismatchException e) {
+			System.out.println("excetption wrong input ");
+		}
+		
+		
+		
+		
+		
+	
+	}
+	static int maxNmuber(ArrayList<Integer> arr) {
+		int max = (int) arr.get(0);
+		for(Integer i : arr) {
+			if(max <  i) {
+				max = i;
+			}
+		}
+		
+		return max;
+	}
+	static int minNmuber(ArrayList<Integer> arr) {
+		int max = arr.get(0);
+		for(Integer i : arr) {
+			if(max >  i) {
+				max = i;
+			}
+		}
+		
+		return max;
+	}
+	
+	
+}
+
+Qno. 9:-/ Write a program that generates a random number and asks the user to guess what the number is.
+If the user's guess is higher than the random number, the program should display "Too high, try
+//again." If the user's guess is lower than the random number, the program should display "Too
+//low, try again." The program should use a loop that repeats until the user correctly guesses the
+//random number.
+Ans.
+package day11;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Scanner;  
+public class Qno2 {
+	public static void main(String args []) throws InputMismatchException{
+		try {
+			boolean f = true;
+			do {
+				int nu = new Random().nextInt(2147483647);
+				System.out.println("enter the number");
+				int temp = new Scanner(System.in).nextInt();
+				
+				if(nu < temp) {
+					System.out.println("too high");
+					System.out.println("number is " + nu);
+				}else if(nu > temp) {
+					System.out.println("too low");
+					System.out.println("number is " + nu);
+				
+				} else {
+					System.out.println("right guess");
+					System.out.println("genrated number is " + nu + " your number is "  + temp);
+					f = false;
+				}
+			
+			}while(f);
+		}catch(InputMismatchException e) {
+			System.out.println("wrong input ");
+		}
+	}
+	
+	
+}
+
+Qno. 10:- find the value of cosxn
+Ans.
+package day11;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Scanner;
+
+// Write a program to compute the cosine of x. The user should supply x and a positive integer n.
+//We compute the cosine of x using the series and the computation should use all terms in the
+//series up through the term involving xn
+//cos x = 1 - x2/2! + x4/4! - x6/6! .....
+public class Qno2 {
+	public static void main(String args []) {
+		System.out.println("Enter the value of x");
+        float x = new Scanner(System.in).nextFloat();
+        System.out.println("enter the value of n");
+        int n = new Scanner(System.in).nextInt();
+        
+        
+        double valueOfAngle = Math.toRadians(x*n);
+        double valueOfCosX = Math.cos(valueOfAngle);
+        
+        System.out.println("value is :-" + valueOfCosX);
+	}
+	
+	
+}
+
