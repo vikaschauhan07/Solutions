@@ -1,0 +1,23 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class NumberGame {
+    public static void main(String[] args) {
+        swapVariables(5,6);
+        swapVariables("First","Second");
+    }
+    static void swapVariables(int a, int b){
+        System.out.println("I got a= " + a + " b= "+b);
+        b = a + b;
+        a = b-a;
+        b = b - a;
+        System.out.println("Values Changed To a= " + a + " b= "+b);
+    }
+    static void swapVariables(String a, String b){
+        System.out.println("I got a= " + a + " b= "+b);
+        a = a + b;
+        b = a.substring(0, (a.length() - b.length()));
+        a = a.substring((a.length() - b.length())-1, (a.length()));
+        System.out.println("I got a= " + a + " b= "+b);
+    }
+}
