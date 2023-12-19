@@ -1,0 +1,116 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class NumberGame {
+    public static void main(String[] args) {
+        // System.out.println(5/2);  
+        String str = "12121212121";
+        int num = 111;
+        if(chk(str)){
+            System.out.println("String Is Palindrom");    
+        } else{
+            System.out.println("String Isn't A Palindrom");
+        }
+
+       if(chk(num) == num){
+          System.out.println("Number Is Palindrom");    
+        } else{
+            System.out.println("Number Isn't A Palindrom");
+        }
+        swapVariables(5,6);
+        swapVariables("First","Second");
+        if(isPrime(1)){
+            System.out.println("Number Is Prime");    
+        } else{
+            System.out.println("Number Isn't Prime");
+        }
+        listPrimeInBetween(10);
+        System.out.println();
+        febonacciRecursive(10);
+        System.out.println();
+        feboDirect(10);
+    }
+    static boolean chk(String str){
+       int itr = str.length();
+       int b = itr-1;
+       for(int i = 0; i < itr/2; i++){
+           if(str.charAt(i) != str.charAt(b)){
+               return false;
+           } else{
+               b--;
+           }
+        }
+        return true;
+    }
+    static int chk(int number){
+        int returnNum = 0;
+        
+        while(number > 0){
+            returnNum = returnNum*10 + number%10; 
+            number = number/10;
+        }
+        return returnNum;
+    }
+    static void swapVariables(int a, int b){
+        System.out.println("I got a= " + a + " b= "+b);
+        b = a + b;
+        a = b-a;
+        b = b - a;
+        System.out.println("Values Changed To a= " + a + " b= "+b);
+    }
+    static void swapVariables(String a, String b){
+        System.out.println("I got a= " + a + " b= "+b);
+        a = a + b;
+        b = a.substring(0, (a.length() - b.length()));
+        a = a.substring((a.length() - b.length())-1, (a.length()));
+        System.out.println("I got a= " + a + " b= "+b);
+    }
+    
+    static boolean isPrime(int n){
+        if(n == 0 || n == 1 || n == -1){
+            return false;
+        }
+        for(int i = 2; i <= n/2; i++){
+            if(n%i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    static void listPrimeInBetween(int n){
+        for(int i = 2; i <= n; i++){
+            if(isPrime(i)){
+                System.out.print(i + ",");    
+            }
+        }
+    }
+    static void febonacciRecursive(int n){
+        for(int i = 0; i <= n; i++){
+            System.out.print(feboNum(i) +" ");
+        }
+    }
+    static int feboNum(int n){
+        if(n <= 1){
+            return n;
+        }
+        
+        return feboNum(n-1) + feboNum(n-2);
+    }
+    static void feboDirect(int n){
+        int a = 0;
+        int b = 1;
+        
+       for(int i = 0; i <= n; i++){
+            if(i == 0){
+                System.out.print(0 +" ");
+            } else if(i == 1){
+                System.out.print(1 + " ");
+            } else{
+                int c = a + b;
+                System.out.print(c + " ");
+                a = b;
+                b = c;
+            }
+       }
+    }
+}
